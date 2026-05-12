@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": "#f8f9fb",
+
+  "title": {
+    "text": "Per Capita Departures by State",
+    "subtitle": "Departures adjusted by state population",
+    "anchor": "start",
+    "font": "Georgia",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "color": "#1f2937",
+    "subtitleColor": "#6b7280"
+  },
+
+  "width": 520,
+  "height": 330,
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/departures_by_state.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "datum.departures / datum.population",
+      "as": "departures_per_capita"
+    }
+  ],
+
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+
+  "encoding": {
+    "y": {
+      "field": "state_name",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null
+    },
+
+    "x": {
+      "field": "departures_per_capita",
+      "type": "quantitative",
+      "title": "Departures per person",
+      "axis": {
+        "format": ".3f",
+        "gridColor": "#e5e7eb"
+      }
+    },
+
+    "color": {
+      "field": "departures_per_capita",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "blues"
+      },
+      "legend": null
+    },
+
+    "tooltip": [
+      {"field": "state_name", "type": "nominal", "title": "State"},
+      {"field": "departures", "type": "quantitative", "title": "Departures", "format": ","},
+      {"field": "population", "type": "quantitative", "title": "Population", "format": ","},
+      {"field": "departures_per_capita", "type": "quantitative", "title": "Per Capita", "format": ".3f"}
+    ]
+  },
+
+  "config": {
+    "view": {"stroke": null}
+  }
+}
