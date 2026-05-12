@@ -1,11 +1,11 @@
-country,departures,lat,lon
-New Zealand,132000,-40.9006,174.8860
-Indonesia,118000,-0.7893,113.9213
-Japan,95000,36.2048,138.2529
-United States,89000,37.0902,-95.7129
-Thailand,76000,15.8700,100.9925
-United Kingdom,72000,55.3781,-3.4360
-Singapore,69000,1.3521,103.8198
-India,64000,20.5937,78.9629
-Vietnam,61000,14.0583,108.2772
-China,57000,35.8617,104.1954
+country,departures
+New Zealand,138040
+Indonesia,121980
+Japan,89230
+Vietnam,58110
+China,56790
+India,56090
+USA,54600
+Thailand,53340
+Singapore,32890
+Philippines,26920
