@@ -9,28 +9,47 @@
 </head>
 
 <body>
+<section class="section travel-state-section">
+  <div class="sec-heading">
+    <span class="sec-num">3</span>
+    <span>Which State Travels the Most?</span>
+  </div>
 
-  <section class="section travel-state-section">
-    <div class="sec-heading">
-      <span class="sec-num">3</span>
-      <span>Which State Travels the Most?</span>
-    </div>
+  <div class="pill pill-coral">By State of Residence</div>
 
-    <p class="narr">
-      New South Wales records the highest number of overseas departures, followed by Victoria and Queensland.
-      The map shows departures relative to population, while the bar chart shows the total number of departures by state.
-    </p>
+  <p class="narr">
+    NSW and VIC send the most travellers abroad. But per capita, WA and ACT punch above their weight.
+    This section asks: does where you live predict how much you travel?
+  </p>
 
-    <div class="state-chart-grid">
-      <div class="chart-card large-card">
-        <div id="map_departures_state"></div>
+  <div class="two-chart-grid">
+
+    <div class="chart-card">
+      <div id="map_departures_state"></div>
+
+      <div class="chart-caption">
+        Vega-Lite Choropleth Map — coloured by departure volume per capita
       </div>
 
-      <div class="chart-card">
-        <div id="bar_departures_state"></div>
+      <div class="chart-annotation">
+        ↑ NSW darkest; Tasmania lightest
       </div>
     </div>
-  </section>
+
+    <div class="chart-card">
+      <div id="bar_departures_state"></div>
+
+      <div class="chart-caption">
+        Horizontal Bar Chart — ranked by departure volume
+      </div>
+
+      <div class="chart-annotation">
+        ↑ NSW and VIC dominate outbound travel
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>

@@ -14,8 +14,8 @@
     "subtitleColor": "#6b7280"
   },
 
-  "width": 500,
-  "height": 320,
+  "width": 320,
+  "height": 250,
 
   "data": {
     "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/departures_by_state.csv"
@@ -27,7 +27,6 @@
   },
 
   "encoding": {
-
     "y": {
       "field": "state_name",
       "type": "nominal",
@@ -35,7 +34,8 @@
       "title": null,
       "axis": {
         "labelFontSize": 12,
-        "labelColor": "#374151"
+        "labelColor": "#374151",
+        "labelLimit": 180
       }
     },
 
@@ -43,8 +43,12 @@
       "field": "departures",
       "type": "quantitative",
       "title": "Number of Departures",
+      "scale": {
+        "domain": [0, 650000]
+      },
       "axis": {
-        "format": ",",
+        "values": [0, 100000, 200000, 300000, 400000, 500000, 600000],
+        "labelExpr": "datum.value == 0 ? '0' : datum.value / 1000 + 'k'",
         "titleFontSize": 12,
         "labelFontSize": 11,
         "gridColor": "#e5e7eb"
@@ -78,6 +82,10 @@
   "config": {
     "view": {
       "stroke": null
+    },
+    "axis": {
+      "labelFont": "Arial",
+      "titleFont": "Arial"
     }
   }
 }

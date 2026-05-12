@@ -16,8 +16,8 @@
     "subtitleColor": "#4b5563"
   },
 
-  "width": 720,
-  "height": 430,
+  "width": 420,
+  "height": 250,
 
   "projection": {
     "type": "mercator"
