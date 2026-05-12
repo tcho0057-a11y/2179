@@ -41,21 +41,34 @@
     </div>
 
   </div>
+  <div class="chart-card full-width-card">
+  <div id="bar_per_capita_state"></div>
+
+
+  <div class="chart-annotation">
+    ↑ ACT and WA rise when population is considered
+  </div>
+</div>
 </section>
 
   <script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
 
-  <script>
-    vegaEmbed("#map_departures_state", "js/map_departures_state.vg.json", {
-      actions: false
-    });
+  <<script>
+  vegaEmbed("#map_departures_state", "js/map_departures_state.vg.json", {
+    actions: false
+  });
 
-    vegaEmbed("#bar_departures_state", "js/bar_departures_state.vg.json", {
-      actions: false
-    });
-  </script>
+  vegaEmbed("#bar_departures_state", "js/bar_departures_state.vg.json", {
+    actions: false
+  });
+
+  vegaEmbed("#bar_per_capita_state", "js/bar_per_capita_state.vg.json", {
+    actions: false
+  });
+</script>
+
 
 </body>
 </html>

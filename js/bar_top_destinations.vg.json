@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "background": "#f8f9fb",
+
+  "title": {
+    "text": "Top Overseas Destinations",
+    "subtitle": "Most visited countries by Australians",
+    "anchor": "start",
+    "font": "Georgia",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "color": "#1f2937",
+    "subtitleColor": "#6b7280"
+  },
+
+  "width": 500,
+  "height": 350,
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/top_destinations.csv"
+  },
+
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+
+  "encoding": {
+    "y": {
+      "field": "country",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null
+    },
+
+    "x": {
+      "field": "departures",
+      "type": "quantitative",
+      "title": "Australian Travellers",
+      "axis": {
+        "values": [0,20000,40000,60000,80000,100000,120000],
+        "labelExpr": "datum.value / 1000 + 'k'",
+        "gridColor": "#e5e7eb"
+      }
+    },
+
+    "color": {
+      "field": "departures",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "blues"
+      },
+      "legend": null
+    },
+
+    "tooltip": [
+      {"field": "country", "type": "nominal"},
+      {"field": "departures", "type": "quantitative", "format": ","}
+    ]
+  },
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

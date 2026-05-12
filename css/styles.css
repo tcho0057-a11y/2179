@@ -32,3 +32,6 @@
     grid-template-columns: 1fr;
   }
 }
+.full-width-card {
+  margin-top: 1rem;
+}
