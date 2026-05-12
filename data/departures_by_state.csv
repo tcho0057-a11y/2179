@@ -1,9 +1,9 @@
-﻿State,State Name,Departures
-NSW,New South Wales,606060
-VIC,Victoria,445790
-QLD,Queensland,303250
-SA,South Australia,62930
-WA,Western Australia,204400
-TAS,Tasmania,18710
-NT,Northern Territory,12260
-ACT,Australian Capital Territory ,22200
+﻿state_name,departures,population
+New South Wales,606060,8576000
+Victoria,445790,7040000
+Queensland,303250,5607000
+South Australia,62930,1887000
+Western Australia,204400,3097000
+Tasmania,18710,576000
+Northern Territory,12260,254000
+Australian Capital Territory,22200,473000
