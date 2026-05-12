@@ -17,8 +17,7 @@
   "height": 360,
 
   "projection": {
-    "type": "equalEarth",
-    "rotate": [-140, 0, 0]
+    "type": "equalEarth"
   },
 
   "layer": [
@@ -37,11 +36,25 @@
         "strokeWidth": 0.5
       }
     },
-
     {
       "data": {
         "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/top_destinations.csv"
       },
+
+      "transform": [
+        {
+          "calculate": "toNumber(datum.longitude)",
+          "as": "lon"
+        },
+        {
+          "calculate": "toNumber(datum.latitude)",
+          "as": "lat"
+        },
+        {
+          "calculate": "toNumber(datum.departures)",
+          "as": "travellers"
+        }
+      ],
 
       "mark": {
         "type": "circle",
@@ -52,35 +65,32 @@
 
       "encoding": {
         "longitude": {
-          "field": "longitude",
+          "field": "lon",
           "type": "quantitative"
         },
-
         "latitude": {
-          "field": "latitude",
+          "field": "lat",
           "type": "quantitative"
         },
-
         "size": {
-          "field": "departures",
+          "field": "travellers",
           "type": "quantitative",
           "scale": {
-            "range": [120, 2500]
+            "range": [80, 2000]
           },
           "legend": {
-            "title": "Travellers"
+            "title": "Travellers",
+            "format": "~s"
           }
         },
-
         "color": {
-          "field": "departures",
+          "field": "travellers",
           "type": "quantitative",
           "scale": {
             "scheme": "blues"
           },
           "legend": null
         },
-
         "tooltip": [
           {
             "field": "country",
@@ -88,7 +98,7 @@
             "title": "Country"
           },
           {
-            "field": "departures",
+            "field": "travellers",
             "type": "quantitative",
             "title": "Travellers",
             "format": ","
