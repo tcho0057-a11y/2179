@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "background": "#f8f9fb",
+
+  "title": {
+    "text": "Overseas Departures by State",
+    "subtitle": "ABS resident departures — February 2026",
+    "anchor": "start",
+    "font": "Georgia",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "color": "#1f2937",
+    "subtitleColor": "#6b7280"
+  },
+
+  "width": 500,
+  "height": 320,
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/departures_by_state.csv"
+  },
+
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+
+  "encoding": {
+
+    "y": {
+      "field": "state_name",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": {
+        "labelFontSize": 12,
+        "labelColor": "#374151"
+      }
+    },
+
+    "x": {
+      "field": "departures",
+      "type": "quantitative",
+      "title": "Number of Departures",
+      "axis": {
+        "format": ",",
+        "titleFontSize": 12,
+        "labelFontSize": 11,
+        "gridColor": "#e5e7eb"
+      }
+    },
+
+    "color": {
+      "field": "departures",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "blues"
+      },
+      "legend": null
+    },
+
+    "tooltip": [
+      {
+        "field": "state_name",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "departures",
+        "type": "quantitative",
+        "title": "Departures",
+        "format": ","
+      }
+    ]
+  },
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}
