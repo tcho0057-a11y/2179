@@ -1,70 +1,147 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "background": "#f8f9fb",
+
   "title": {
-    "text": "Australian Overseas Departures by State (February 2026)",
-    "fontSize": 14,
+    "text": "Australian Overseas Departures by State",
+    "subtitle": "Departures per capita — February 2026",
+    "anchor": "start",
     "font": "Georgia",
-    "anchor": "start"
+    "fontSize": 22,
+    "subtitleFont": "Arial",
+    "subtitleFontSize": 13,
+    "offset": 15,
+    "color": "#1f2937",
+    "subtitleColor": "#4b5563"
   },
-  "width": 700,
-  "height": 400,
-  "projection": {"type": "mercator"},
+
+  "width": 720,
+  "height": 430,
+
+  "projection": {
+    "type": "mercator"
+  },
+
   "layer": [
     {
       "data": {
-        "url": "js/map_australia_1.json",
+        "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/js/Map_Australia_1.json",
         "format": {
           "type": "topojson",
           "feature": "ne_50m_admin_1_states_provinces"
         }
       },
+
       "transform": [
         {
           "lookup": "properties.name",
           "from": {
-            "data": {"url": "data/departures_by_state.csv"},
+            "data": {
+              "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/departures_by_state.csv"
+            },
             "key": "state_name",
-            "fields": ["departures", "population"]
+            "fields": [
+              "departures",
+              "population"
+            ]
           }
         },
+
         {
           "calculate": "datum.departures / datum.population",
           "as": "departures_per_capita"
+        },
+
+        {
+          "calculate": "format(datum.departures, ',')",
+          "as": "formatted_departures"
+        },
+
+        {
+          "calculate": "format(datum.population, ',')",
+          "as": "formatted_population"
         }
       ],
-      "mark": {"type": "geoshape"},
+
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 1.2
+      },
+
       "encoding": {
         "color": {
           "field": "departures_per_capita",
           "type": "quantitative",
+
           "scale": {
-            "type": "threshold",
-            "domain": [0.03, 0.06, 0.09],
-            "range": ["#d4eaf7", "#7ab8d9", "#2e7fb8", "#0d3b6b"]
+            "domain": [0.03, 0.075],
+            "scheme": "blues"
           },
-          "title": "Departures per capita"
+
+          "legend": {
+            "title": "Departures per Capita",
+            "orient": "right",
+            "gradientLength": 250,
+            "titleFontSize": 13,
+            "labelFontSize": 11,
+            "format": ".3f"
+          }
         },
+
         "tooltip": [
-          {"field": "properties.name", "type": "nominal", "title": "State"},
-          {"field": "departures", "type": "quantitative", "title": "Total Departures", "format": ","},
-          {"field": "departures_per_capita", "type": "quantitative", "title": "Per Capita", "format": ".3f"}
+          {
+            "field": "properties.name",
+            "type": "nominal",
+            "title": "State"
+          },
+
+          {
+            "field": "formatted_departures",
+            "type": "nominal",
+            "title": "Total Departures"
+          },
+
+          {
+            "field": "formatted_population",
+            "type": "nominal",
+            "title": "Population"
+          },
+
+          {
+            "field": "departures_per_capita",
+            "type": "quantitative",
+            "title": "Per Capita Rate",
+            "format": ".3f"
+          }
         ]
       }
     },
+
     {
       "data": {
-        "url": "js/map_australia_1.json",
+        "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/js/Map_Australia_1.json",
         "format": {
           "type": "topojson",
           "feature": "ne_50m_admin_1_states_provinces"
         }
       },
+
       "mark": {
         "type": "geoshape",
-        "filled": false,
-        "stroke": "white",
-        "strokeWidth": 0.5
+        "fill": null,
+        "stroke": "#374151",
+        "strokeWidth": 0.7
       }
     }
-  ]
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+
+    "font": "Arial"
+  }
 }
