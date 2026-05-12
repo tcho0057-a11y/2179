@@ -1,0 +1,106 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": "#f8f9fb",
+
+  "title": {
+    "text": "Where Australians Travel Overseas",
+    "subtitle": "Bubble size represents short-term resident returns",
+    "anchor": "start",
+    "font": "Georgia",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "color": "#1f2937",
+    "subtitleColor": "#6b7280"
+  },
+
+  "width": 650,
+  "height": 360,
+
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [-140, 0, 0]
+  },
+
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vega/vega-datasets/master/data/world-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e2ddd4",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.5
+      }
+    },
+
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/top_destinations.csv"
+      },
+
+      "mark": {
+        "type": "circle",
+        "opacity": 0.75,
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+
+        "size": {
+          "field": "departures",
+          "type": "quantitative",
+          "scale": {
+            "range": [120, 2500]
+          },
+          "legend": {
+            "title": "Travellers"
+          }
+        },
+
+        "color": {
+          "field": "departures",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "blues"
+          },
+          "legend": null
+        },
+
+        "tooltip": [
+          {
+            "field": "country",
+            "type": "nominal",
+            "title": "Country"
+          },
+          {
+            "field": "departures",
+            "type": "quantitative",
+            "title": "Travellers",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

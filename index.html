@@ -54,8 +54,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
-
-  <<script>
+<script>
   vegaEmbed("#map_departures_state", "js/map_departures_state.vg.json", {
     actions: false
   });
@@ -67,8 +66,44 @@
   vegaEmbed("#bar_per_capita_state", "js/bar_per_capita_state.vg.json", {
     actions: false
   });
-</script>
 
+  vegaEmbed("#bar_top_destinations", "js/bar_top_destinations.vg.json", {
+    actions: false
+  });
+  vegaEmbed("#world_destination_map", "js/world_destination_map.vg.json", {
+  actions: false
+  });
+    
+</script>
+</script>
+<section class="section destination-section">
+  <div class="sec-heading">
+    <span class="sec-num">4</span>
+    <span>Where Do Australians Go Overseas?</span>
+  </div>
+
+  <div class="pill pill-coral">International Destinations</div>
+
+  <p class="narr">
+    New Zealand, Indonesia and Japan are among the most popular overseas destinations for Australian travellers.
+    This chart shows the top short-term destination countries and highlights the strong pull of the Asia-Pacific region.
+  </p>
+
+  <div class="chart-card destination-card">
+    <div id="bar_top_destinations"></div>
+
+    <div class="chart-annotation">
+      ↑ New Zealand and Indonesia lead Australian outbound travel
+    </div>
+  </div>
+  <div class="chart-card destination-card">
+  <div id="world_destination_map"></div>
+
+  <div class="chart-annotation">
+    ↑ Australian outbound travel is concentrated around Asia-Pacific destinations
+  </div>
+</div>
+</section>
 
 </body>
 </html>
