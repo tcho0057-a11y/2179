@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>My First HTML Document</title>
-</head>
-<body>
-    <h1>Heading 1</h1>
-    <p> My First Paragraph.</p>
+<section class="section">
+  <div class="sec-heading">
+    <span class="sec-num">3</span> Which State Travels the Most?
+  </div>
+
+  <p class="narr">
+    New South Wales records the highest number of overseas departures, followed by Victoria and Queensland.
+    The map shows departures relative to population, while the bar chart shows the total number of departures by state.
+  </p>
+
+  <div class="chart-grid-two">
+    <div class="chart-card">
+      <div id="map_departures_state"></div>
+    </div>
+
+    <div class="chart-card">
+      <div id="bar_departures_state"></div>
+    </div>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
+
+<script>
+  vegaEmbed("#map_departures_state", "js/map_departures_state.vg.json", {
+    actions: false
+  });
+
+  vegaEmbed("#bar_departures_state", "js/bar_departures_state.vg.json", {
+    actions: false
+  });
+</script>
 </body>
 </html>
