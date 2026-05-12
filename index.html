@@ -1,38 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<section class="section travel-state-section">
-  <div class="sec-heading">
-    <span class="sec-num">3</span>
-    <span>Which State Travels the Most?</span>
-  </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where Do Australians Travel?</title>
 
-  <p class="narr">
-    New South Wales records the highest number of overseas departures, followed by Victoria and Queensland. 
-    The map shows departures relative to population, while the bar chart shows the total number of departures by state.
-  </p>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
 
-  <div class="state-chart-grid">
-    <div class="chart-card large-card">
-      <div id="map_departures_state"></div>
+<body>
+
+  <section class="section travel-state-section">
+    <div class="sec-heading">
+      <span class="sec-num">3</span>
+      <span>Which State Travels the Most?</span>
     </div>
 
-    <div class="chart-card">
-      <div id="bar_departures_state"></div>
+    <p class="narr">
+      New South Wales records the highest number of overseas departures, followed by Victoria and Queensland.
+      The map shows departures relative to population, while the bar chart shows the total number of departures by state.
+    </p>
+
+    <div class="state-chart-grid">
+      <div class="chart-card large-card">
+        <div id="map_departures_state"></div>
+      </div>
+
+      <div class="chart-card">
+        <div id="bar_departures_state"></div>
+      </div>
     </div>
-  </div>
-</section>
-<script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
-<script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
-<script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
+  </section>
 
-<script>
-  vegaEmbed("#map_departures_state", "js/map_departures_state.vg.json", {
-    actions: false
-  });
+  <script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
 
-  vegaEmbed("#bar_departures_state", "js/bar_departures_state.vg.json", {
-    actions: false
-  });
-</script>
+  <script>
+    vegaEmbed("#map_departures_state", "js/map_departures_state.vg.json", {
+      actions: false
+    });
+
+    vegaEmbed("#bar_departures_state", "js/bar_departures_state.vg.json", {
+      actions: false
+    });
+  </script>
+
 </body>
 </html>
