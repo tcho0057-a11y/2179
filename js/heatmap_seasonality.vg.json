@@ -1,0 +1,84 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": "#f8f9fb",
+
+  "title": {
+    "text": "When Australians Travel",
+    "subtitle": "Monthly overseas departure patterns",
+    "anchor": "start",
+    "font": "Georgia",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "color": "#1f2937",
+    "subtitleColor": "#6b7280"
+  },
+
+  "width": 650,
+  "height": 260,
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/monthly_departures.csv"
+  },
+
+  "mark": {
+    "type": "rect",
+    "stroke": "#f8f9fb",
+    "strokeWidth": 2
+  },
+
+  "encoding": {
+    "x": {
+      "field": "month",
+      "type": "ordinal",
+      "sort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      "title": "Month"
+    },
+
+    "y": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+
+    "color": {
+      "field": "departures",
+      "type": "quantitative",
+      "title": "Departures",
+      "scale": {
+        "scheme": "blues"
+      },
+      "legend": {
+        "format": "~s"
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "month",
+        "type": "ordinal",
+        "title": "Month"
+      },
+      {
+        "field": "departures",
+        "type": "quantitative",
+        "title": "Departures",
+        "format": ","
+      }
+    ]
+  },
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Arial",
+      "titleFont": "Arial"
+    }
+  }
+}

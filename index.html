@@ -28,7 +28,7 @@
       <div id="map_departures_state"></div>
 
       <div class="chart-annotation">
-        ↑ NSW darkest; Tasmania lightest
+        NSW darkest; Tasmania lightest
       </div>
     </div>
 
@@ -36,7 +36,7 @@
       <div id="bar_departures_state"></div>
 
       <div class="chart-annotation">
-        ↑ NSW and VIC dominate outbound travel
+        NSW and VIC dominate outbound travel
       </div>
     </div>
 
@@ -46,7 +46,7 @@
 
 
   <div class="chart-annotation">
-    ↑ ACT and WA rise when population is considered
+    ACT and WA rise when population is considered
   </div>
 </div>
 </section>
@@ -73,6 +73,9 @@
   vegaEmbed("#world_destination_map", "js/world_destination_map.vg.json", {
   actions: false
   });
+  vegaEmbed("#heatmap_seasonality", "js/heatmap_seasonality.vg.json", {
+  actions: false
+});
     
 </script>
 </script>
@@ -93,17 +96,44 @@
     <div id="bar_top_destinations"></div>
 
     <div class="chart-annotation">
-      ↑ New Zealand and Indonesia lead Australian outbound travel
+    New Zealand and Indonesia lead Australian outbound travel
     </div>
   </div>
   <div class="chart-card destination-card">
   <div id="world_destination_map"></div>
 
   <div class="chart-annotation">
-    ↑ Australian outbound travel is concentrated around Asia-Pacific destinations
+   Australian outbound travel is concentrated around Asia-Pacific destinations
   </div>
+  <div class="chart-annotation">
+   Move the slider to isolate the most popular destinations — New Zealand and Indonesia remain dominant
+</div>
 </div>
 </section>
+<section class="section seasonality-section">
+  <div class="sec-heading">
+    <span class="sec-num">5</span>
+    <span>When Do Australians Travel?</span>
+  </div>
 
+  <div class="pill pill-coral">Seasonality</div>
+
+  <p class="narr">
+    Australian overseas travel follows a seasonal rhythm, with stronger travel activity around holiday periods.
+    This heatmap shows which months attract the highest number of departures.
+  </p>
+
+  <div class="chart-card destination-card">
+    <div id="heatmap_seasonality"></div>
+
+    <div class="chart-caption">
+      Heatmap — darker cells represent higher departure volumes
+    </div>
+
+    <div class="chart-annotation">
+      Holiday periods create visible spikes in overseas departures
+    </div>
+  </div>
+</section>
 </body>
 </html>
