@@ -14,23 +14,31 @@
   },
 
   "width": 650,
-  "height": 260,
+  "height": 160,
 
   "data": {
-    "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/monthly_departures.csv"
+    "values": [
+      {"year": "2025", "month": "Sep", "departures": 950000},
+      {"year": "2025", "month": "Oct", "departures": 1020000},
+      {"year": "2025", "month": "Nov", "departures": 1100000},
+      {"year": "2025", "month": "Dec", "departures": 1350000},
+      {"year": "2026", "month": "Jan", "departures": 1420000},
+      {"year": "2026", "month": "Feb", "departures": 1210000},
+      {"year": "2026", "month": "Mar", "departures": 1180000}
+    ]
   },
 
   "mark": {
     "type": "rect",
     "stroke": "#f8f9fb",
-    "strokeWidth": 2
+    "strokeWidth": 3
   },
 
   "encoding": {
     "x": {
       "field": "month",
       "type": "ordinal",
-      "sort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      "sort": ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "title": "Month"
     },
 
@@ -53,32 +61,15 @@
     },
 
     "tooltip": [
-      {
-        "field": "year",
-        "type": "ordinal",
-        "title": "Year"
-      },
-      {
-        "field": "month",
-        "type": "ordinal",
-        "title": "Month"
-      },
-      {
-        "field": "departures",
-        "type": "quantitative",
-        "title": "Departures",
-        "format": ","
-      }
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {"field": "month", "type": "ordinal", "title": "Month"},
+      {"field": "departures", "type": "quantitative", "title": "Departures", "format": ","}
     ]
   },
 
   "config": {
     "view": {
       "stroke": null
-    },
-    "axis": {
-      "labelFont": "Arial",
-      "titleFont": "Arial"
     }
   }
 }
