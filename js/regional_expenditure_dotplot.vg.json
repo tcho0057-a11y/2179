@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": "#f8f9fb",
+
+  "title": {
+    "text": "Where Domestic Travellers Spend Most",
+    "subtitle": "Regional expenditure by state, December Quarter 2025",
+    "anchor": "start",
+    "font": "Georgia",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "color": "#1f2937",
+    "subtitleColor": "#6b7280"
+  },
+
+  "width": 650,
+  "height": 320,
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/regional_expenditure.csv"
+  },
+
+  "mark": {
+    "type": "circle",
+    "size": 180,
+    "color": "#0d6e8a",
+    "opacity": 0.9
+  },
+
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null
+    },
+
+    "x": {
+      "field": "expenditure_million",
+      "type": "quantitative",
+      "title": "Regional expenditure ($ million)",
+      "axis": {
+        "values": [0, 2000, 4000, 6000, 8000],
+        "labelExpr": "'$' + datum.value / 1000 + 'B'",
+        "gridColor": "#e5e7eb"
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "expenditure_million",
+        "type": "quantitative",
+        "title": "Expenditure ($m)",
+        "format": ","
+      }
+    ]
+  },
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

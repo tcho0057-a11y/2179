@@ -86,6 +86,9 @@
   vegaEmbed("#trip_length_age", "js/trip_length_age.vg.json", {
   actions: false
 });
+vegaEmbed("#regional_expenditure_dotplot", "js/regional_expenditure_dotplot.vg.json", {
+  actions: false
+});
     
 </script>
 </script>
@@ -116,13 +119,13 @@
    Australian outbound travel is concentrated around Asia-Pacific destinations
   </div>
   <div class="chart-annotation">
-   Move the slider to isolate the most popular destinations — New Zealand and Indonesia remain dominant
+   Move the slider to isolate the most popular destinations:  New Zealand and Indonesia remain dominant
 </div>
 </div>
 </section>
 <section class="section seasonality-section">
   <div class="sec-heading">
-    <span class="sec-num">5</span>
+    <span class="sec-num"></span>
     <span>When Do Australians Travel?</span>
   </div>
 
@@ -193,12 +196,33 @@
   <div class="chart-card destination-card">
     <div id="trip_length_age"></div>
 
-    <div class="chart-caption">
-      100% Stacked Bar Chart — age-group composition by trip length
-    </div>
 
     <div class="chart-annotation">
      Travellers aged 60+ make up half of trips lasting 15 nights or longer
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="sec-heading">
+    <span class="sec-num">7</span>
+    <span>Where Do Domestic Travellers Spend Most?</span>
+  </div>
+
+  <div class="pill pill-coral">Domestic Expenditure</div>
+
+  <p class="narr">
+    Domestic travel spending is concentrated in the larger tourism states, especially New South Wales, Queensland and Victoria.
+  </p>
+
+  <div class="chart-card destination-card">
+    <div id="regional_expenditure_dotplot"></div>
+
+    <div class="chart-caption">
+      Dot Plot — regional expenditure by state
+    </div>
+
+    <div class="chart-annotation">
+      ↑ NSW records the highest domestic tourism expenditure
     </div>
   </div>
 </section>
