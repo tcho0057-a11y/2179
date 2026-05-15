@@ -75,6 +75,16 @@
   });
   vegaEmbed("#heatmap_seasonality", "js/heatmap_seasonality.vg.json", {
   actions: false
+  });
+  vegaEmbed("#domestic_vs_international", "js/domestic_vs_international.vg.json", {
+    actions: false
+  });
+
+  vegaEmbed("#travel_mix_donut", "js/travel_mix_donut.vg.json", {
+    actions: false
+  });
+  vegaEmbed("#trip_length_age", "js/trip_length_age.vg.json", {
+  actions: false
 });
     
 </script>
@@ -128,6 +138,67 @@
 
     <div class="chart-annotation"> </div>
       Holiday periods create visible spikes in overseas departures
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="sec-heading">
+    <span class="sec-num">5</span>
+    <span>Overseas vs. Staying Home</span>
+  </div>
+
+  <div class="section-tag">
+    DOMESTIC VS INTERNATIONAL (TWO SOURCES)
+  </div>
+
+  <p class="narr">
+    Australians travel heavily both domestically and internationally. 
+    This section compares domestic overnight trips with overseas departures 
+    to reveal which states travel most overall and how Australia's travel mix is distributed.
+  </p>
+
+  <div class="two-chart-grid">
+
+    <div class="chart-card">
+      <div id="domestic_vs_international"></div>
+
+      <div class="chart-annotation">
+        ↑ NSW dominates both domestic and international travel activity
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div id="travel_mix_donut"></div>
+
+      <div class="chart-annotation">
+         Domestic overnight travel remains significantly larger overall
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="sec-heading">
+    <span class="sec-num">6</span>
+    <span>Who Takes Longer Domestic Trips?</span>
+  </div>
+
+  <div class="pill pill-coral">Trip Length and Age</div>
+
+  <p class="narr">
+    Longer domestic trips are more common among older Australians. As trip length increases,
+    the share of travellers aged 60 and over becomes much larger.
+  </p>
+
+  <div class="chart-card destination-card">
+    <div id="trip_length_age"></div>
+
+    <div class="chart-caption">
+      100% Stacked Bar Chart — age-group composition by trip length
+    </div>
+
+    <div class="chart-annotation">
+     Travellers aged 60+ make up half of trips lasting 15 nights or longer
     </div>
   </div>
 </section>

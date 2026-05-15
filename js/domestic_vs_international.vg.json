@@ -1,0 +1,110 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "background": "#f8f9fb",
+
+  "title": {
+    "text": "Domestic vs International Travel by State",
+    "subtitle": "Comparing overnight domestic trips with overseas departures",
+    "anchor": "start",
+    "font": "Georgia",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "color": "#1f2937",
+    "subtitleColor": "#6b7280"
+  },
+
+  "width": 520,
+  "height": 340,
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/domestic_vs_international.csv"
+  },
+
+  "transform": [
+    {
+      "fold": [
+        "domestic_trips",
+        "international_departures"
+      ],
+      "as": ["travel_type", "value"]
+    }
+  ],
+
+  "mark": {
+    "type": "bar",
+    "cornerRadiusTopLeft": 4,
+    "cornerRadiusTopRight": 4
+  },
+
+  "encoding": {
+    "x": {
+      "field": "state",
+      "type": "nominal",
+      "sort": "-y",
+      "axis": {
+        "labelAngle": -25,
+        "title": null,
+        "labelColor": "#374151"
+      }
+    },
+
+    "xOffset": {
+      "field": "travel_type"
+    },
+
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Trips / Departures",
+      "axis": {
+        "gridColor": "#e5e7eb",
+        "labelExpr": "datum.value >= 1000 ? datum.value/1000 + 'k' : datum.value"
+      }
+    },
+
+    "color": {
+      "field": "travel_type",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "domestic_trips",
+          "international_departures"
+        ],
+        "range": [
+          "#8ecae6",
+          "#1d4e89"
+        ]
+      },
+      "legend": {
+        "title": "Travel Type",
+        "labelExpr": "datum.label == 'domestic_trips' ? 'Domestic Trips' : 'International Departures'"
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "travel_type",
+        "type": "nominal",
+        "title": "Type"
+      },
+      {
+        "field": "value",
+        "type": "quantitative",
+        "format": ",",
+        "title": "Value"
+      }
+    ]
+  },
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

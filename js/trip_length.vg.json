@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": "#f8f9fb",
+  "title": {
+    "text": "Who Takes Longer Domestic Trips?",
+    "subtitle": "Share of overnight trips by age group and trip length",
+    "anchor": "start",
+    "font": "Georgia",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "color": "#1f2937",
+    "subtitleColor": "#6b7280"
+  },
+  "width": 650,
+  "height": 300,
+  "data": {
+    "values": [
+      {"trip_length": "1-3 nights", "age_group": "14-29", "percentage": 25},
+      {"trip_length": "1-3 nights", "age_group": "30-44", "percentage": 27},
+      {"trip_length": "1-3 nights", "age_group": "45-59", "percentage": 23},
+      {"trip_length": "1-3 nights", "age_group": "60+", "percentage": 25},
+
+      {"trip_length": "4-7 nights", "age_group": "14-29", "percentage": 24},
+      {"trip_length": "4-7 nights", "age_group": "30-44", "percentage": 24},
+      {"trip_length": "4-7 nights", "age_group": "45-59", "percentage": 22},
+      {"trip_length": "4-7 nights", "age_group": "60+", "percentage": 30},
+
+      {"trip_length": "8-14 nights", "age_group": "14-29", "percentage": 20},
+      {"trip_length": "8-14 nights", "age_group": "30-44", "percentage": 23},
+      {"trip_length": "8-14 nights", "age_group": "45-59", "percentage": 21},
+      {"trip_length": "8-14 nights", "age_group": "60+", "percentage": 37},
+
+      {"trip_length": "15+ nights", "age_group": "14-29", "percentage": 16},
+      {"trip_length": "15+ nights", "age_group": "30-44", "percentage": 17},
+      {"trip_length": "15+ nights", "age_group": "45-59", "percentage": 17},
+      {"trip_length": "15+ nights", "age_group": "60+", "percentage": 50}
+    ]
+  },
+  "mark": {
+    "type": "bar"
+  },
+  "encoding": {
+    "x": {
+      "field": "percentage",
+      "type": "quantitative",
+      "stack": "normalize",
+      "title": "Share of trips",
+      "axis": {
+        "format": ".0%"
+      }
+    },
+    "y": {
+      "field": "trip_length",
+      "type": "ordinal",
+      "sort": ["1-3 nights", "4-7 nights", "8-14 nights", "15+ nights"],
+      "title": "Trip length"
+    },
+    "color": {
+      "field": "age_group",
+      "type": "nominal",
+      "title": "Age group",
+      "scale": {
+        "domain": ["14-29", "30-44", "45-59", "60+"],
+        "range": ["#8ecae6", "#219ebc", "#156082", "#0b3954"]
+      }
+    },
+    "tooltip": [
+      {"field": "trip_length", "type": "ordinal", "title": "Trip Length"},
+      {"field": "age_group", "type": "nominal", "title": "Age Group"},
+      {"field": "percentage", "type": "quantitative", "title": "Share (%)"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null}
+  }
+}

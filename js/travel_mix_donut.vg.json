@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": "#f8f9fb",
+
+  "title": {
+    "text": "Travel Mix Donut",
+    "subtitle": "Domestic travel still dominates Australian tourism activity",
+    "anchor": "start",
+    "font": "Georgia",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "color": "#1f2937",
+    "subtitleColor": "#6b7280"
+  },
+
+  "width": 350,
+  "height": 300,
+
+  "data": {
+    "values": [
+      {
+        "type": "Domestic Overnight Trips",
+        "trips": 29538
+      },
+      {
+        "type": "International Departures",
+        "trips": 1679600
+      }
+    ]
+  },
+
+  "mark": {
+    "type": "arc",
+    "innerRadius": 70,
+    "outerRadius": 120,
+    "stroke": "white",
+    "strokeWidth": 2
+  },
+
+  "encoding": {
+    "theta": {
+      "field": "trips",
+      "type": "quantitative"
+    },
+
+    "color": {
+      "field": "type",
+      "type": "nominal",
+      "scale": {
+        "range": ["#8ecae6", "#1d4e89"]
+      },
+      "legend": {
+        "title": null,
+        "orient": "bottom"
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "type",
+        "type": "nominal",
+        "title": "Travel Type"
+      },
+      {
+        "field": "trips",
+        "type": "quantitative",
+        "title": "Trips",
+        "format": ","
+      }
+    ]
+  },
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}
