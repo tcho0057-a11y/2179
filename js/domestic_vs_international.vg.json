@@ -105,6 +105,13 @@
   "config": {
     "view": {
       "stroke": null
+    },
+    "legend": {
+      "orient": "top-right",
+      "direction": "vertical",
+      "titleFontSize": 12,
+      "labelFontSize": 11,
+      "offset": 10
     }
   }
 }

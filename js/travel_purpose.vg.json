@@ -1,0 +1,67 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": "#f8f9fb",
+
+  "title": {
+    "text": "Why Do Australians Travel?",
+    "subtitle": "Purpose of domestic daytrips, December Quarter 2025",
+    "anchor": "start",
+    "font": "Georgia",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "color": "#1f2937",
+    "subtitleColor": "#6b7280"
+  },
+
+  "width": 700,
+  "height": 90,
+
+  "data": {
+    "values": [
+      {"purpose": "Holiday", "trips_million": 36.6},
+      {"purpose": "Visiting Friends and Relatives", "trips_million": 21.5},
+      {"purpose": "Business", "trips_million": 5.0},
+      {"purpose": "Other", "trips_million": 7.6}
+    ]
+  },
+
+  "mark": {
+    "type": "bar",
+    "cornerRadius": 5
+  },
+
+  "encoding": {
+    "x": {
+      "field": "trips_million",
+      "type": "quantitative",
+      "stack": "normalize",
+      "axis": {
+        "format": ".0%"
+      },
+      "title": "Share of Domestic Daytrips"
+    },
+
+    "color": {
+      "field": "purpose",
+      "type": "nominal",
+      "title": "Purpose",
+      "scale": {
+        "range": ["#0d6e8a", "#4ea8de", "#90caf9", "#d6eaf8"]
+      },
+      "legend": {
+        "orient": "bottom"
+      }
+    },
+
+    "tooltip": [
+      {"field": "purpose", "type": "nominal", "title": "Purpose"},
+      {"field": "trips_million", "type": "quantitative", "title": "Trips (millions)"}
+    ]
+  },
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

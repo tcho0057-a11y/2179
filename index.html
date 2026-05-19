@@ -7,11 +7,43 @@
 
   <link rel="stylesheet" href="css/styles.css">
 </head>
+<section class="hero-section">
 
+  <div class="hero-left">
+    <p class="eyebrow">FIT2179 · Data Visualisation</p>
+
+    <h1>
+      Where Do Australians Travel?
+    </h1>
+
+    <p class="hero-description">
+      An analytical visualization of Australian tourism dynamics, contrasting domestic and international travel patterns across different states, seasons, and regional preferences.
+    </p>
+  </div>
+
+  <div class="hero-right">
+
+    <div class="hero-stat-card">
+      <span class="hero-number">21M+</span>
+      <span class="hero-label">
+        Overseas departures in 2025
+      </span>
+    </div>
+
+    <div class="hero-stat-card">
+      <span class="hero-number">$27B</span>
+      <span class="hero-label">
+        Domestic tourism expenditure
+      </span>
+    </div>
+
+  </div>
+
+</section>
 <body>
 <section class="section travel-state-section">
   <div class="sec-heading">
-    <span class="sec-num">3</span>
+    <span class="sec-num">1</span>
     <span>Which State Travels the Most?</span>
   </div>
 
@@ -89,12 +121,15 @@
 vegaEmbed("#regional_expenditure_dotplot", "js/regional_expenditure_dotplot.vg.json", {
   actions: false
 });
+vegaEmbed("#travel_purpose", "js/travel_purpose.vg.json", {
+  actions: false
+});
     
 </script>
 </script>
 <section class="section destination-section">
   <div class="sec-heading">
-    <span class="sec-num">4</span>
+    <span class="sec-num">2</span>
     <span>Where Do Australians Go Overseas?</span>
   </div>
 
@@ -125,8 +160,9 @@ vegaEmbed("#regional_expenditure_dotplot", "js/regional_expenditure_dotplot.vg.j
 </section>
 <section class="section seasonality-section">
   <div class="sec-heading">
-    <span class="sec-num"></span>
+    <span class="sec-num">3</span>
     <span>When Do Australians Travel?</span>
+
   </div>
 
   <div class="pill pill-coral">Seasonality</div>
@@ -139,14 +175,14 @@ vegaEmbed("#regional_expenditure_dotplot", "js/regional_expenditure_dotplot.vg.j
   <div class="chart-card destination-card">
     <div id="heatmap_seasonality"></div>
 
-    <div class="chart-annotation"> </div>
-      Holiday periods create visible spikes in overseas departures
+    <div class="chart-annotation">
+    Holiday periods create visible spikes in overseas departures
     </div>
   </div>
 </section>
 <section class="section">
   <div class="sec-heading">
-    <span class="sec-num">5</span>
+    <span class="sec-num">4</span>
     <span>Overseas vs. Staying Home</span>
   </div>
 
@@ -166,7 +202,7 @@ vegaEmbed("#regional_expenditure_dotplot", "js/regional_expenditure_dotplot.vg.j
       <div id="domestic_vs_international"></div>
 
       <div class="chart-annotation">
-        ↑ NSW dominates both domestic and international travel activity
+        NSW dominates both domestic and international travel activity
       </div>
     </div>
 
@@ -182,7 +218,7 @@ vegaEmbed("#regional_expenditure_dotplot", "js/regional_expenditure_dotplot.vg.j
 </section>
 <section class="section">
   <div class="sec-heading">
-    <span class="sec-num">6</span>
+    <span class="sec-num">5</span>
     <span>Who Takes Longer Domestic Trips?</span>
   </div>
 
@@ -204,7 +240,7 @@ vegaEmbed("#regional_expenditure_dotplot", "js/regional_expenditure_dotplot.vg.j
 </section>
 <section class="section">
   <div class="sec-heading">
-    <span class="sec-num">7</span>
+    <span class="sec-num">6</span>
     <span>Where Do Domestic Travellers Spend Most?</span>
   </div>
 
@@ -217,13 +253,26 @@ vegaEmbed("#regional_expenditure_dotplot", "js/regional_expenditure_dotplot.vg.j
   <div class="chart-card destination-card">
     <div id="regional_expenditure_dotplot"></div>
 
-    <div class="chart-caption">
-      Dot Plot — regional expenditure by state
-    </div>
 
     <div class="chart-annotation">
-      ↑ NSW records the highest domestic tourism expenditure
+       NSW records the highest domestic tourism expenditure
     </div>
+  </div>
+</section>
+<section class="section">
+  <div class="sec-heading">
+    <span class="sec-num">7</span>
+    <span>Why Do Australians Travel?</span>
+  </div>
+
+
+  <p class="narr">
+    Holiday travel dominates Australian domestic tourism, while visiting friends and relatives also forms a major share of trips.
+  </p>
+
+  <div class="chart-card destination-card">
+    <div id="travel_purpose"></div>
+
   </div>
 </section>
 </body>
