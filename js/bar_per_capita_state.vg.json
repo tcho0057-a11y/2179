@@ -1,7 +1,6 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "background": "#f8f9fb",
-
   "title": {
     "text": "Per Capita Departures by State",
     "subtitle": "Departures adjusted by state population",
@@ -12,26 +11,37 @@
     "color": "#1f2937",
     "subtitleColor": "#6b7280"
   },
-
-  "width": 520,
+  "width": "container",
   "height": 330,
-
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/departures_by_state.csv"
   },
-
+  "params": [
+    {
+      "name": "State_Filter",
+      "value": "All States",
+      "bind": {
+        "element": "#state-selector"
+      }
+    }
+  ],
   "transform": [
     {
       "calculate": "datum.departures / datum.population",
       "as": "departures_per_capita"
+    },
+    {
+      "filter": "State_Filter === 'All States' || datum.state_name === State_Filter"
     }
   ],
-
   "mark": {
     "type": "bar",
     "cornerRadiusEnd": 4
   },
-
   "encoding": {
     "y": {
       "field": "state_name",
@@ -39,7 +49,6 @@
       "sort": "-x",
       "title": null
     },
-
     "x": {
       "field": "departures_per_capita",
       "type": "quantitative",
@@ -49,16 +58,9 @@
         "gridColor": "#e5e7eb"
       }
     },
-
     "color": {
-      "field": "departures_per_capita",
-      "type": "quantitative",
-      "scale": {
-        "scheme": "blues"
-      },
-      "legend": null
+      "value": "#123456"
     },
-
     "tooltip": [
       {"field": "state_name", "type": "nominal", "title": "State"},
       {"field": "departures", "type": "quantitative", "title": "Departures", "format": ","},
@@ -66,7 +68,6 @@
       {"field": "departures_per_capita", "type": "quantitative", "title": "Per Capita", "format": ".3f"}
     ]
   },
-
   "config": {
     "view": {"stroke": null}
   }

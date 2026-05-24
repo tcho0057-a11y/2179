@@ -5,7 +5,7 @@
 
   "title": {
     "text": "Australian Overseas Departures by State",
-    "subtitle": "Departures per capital:  February 2026",
+    "subtitle": "Departures per capita · February 2026",
     "anchor": "start",
     "font": "Georgia",
     "fontSize": 22,
@@ -16,7 +16,7 @@
     "subtitleColor": "#4b5563"
   },
 
-  "width": 420,
+  "width": "container",
   "height": 250,
 
   "projection": {
@@ -41,26 +41,24 @@
               "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/departures_by_state.csv"
             },
             "key": "state_name",
-            "fields": [
-              "departures",
-              "population"
-            ]
+            "fields": ["departures", "population"]
           }
         },
-
         {
           "calculate": "datum.departures / datum.population",
           "as": "departures_per_capita"
         },
-
         {
           "calculate": "format(datum.departures, ',')",
           "as": "formatted_departures"
         },
-
         {
           "calculate": "format(datum.population, ',')",
           "as": "formatted_population"
+        },
+        {
+          "calculate": "datum.departures_per_capita < 0.040 ? 'Under 0.040' : datum.departures_per_capita < 0.050 ? '0.040 – 0.050' : datum.departures_per_capita < 0.060 ? '0.050 – 0.060' : datum.departures_per_capita < 0.070 ? '0.060 – 0.070' : '0.070 and above'",
+          "as": "rate_bin"
         }
       ],
 
@@ -72,21 +70,32 @@
 
       "encoding": {
         "color": {
-          "field": "departures_per_capita",
-          "type": "quantitative",
-
+          "field": "rate_bin",
+          "type": "ordinal",
+          "title": "Departures per Capita",
           "scale": {
-            "domain": [0.03, 0.075],
-            "scheme": "blues"
+            "domain": [
+              "Under 0.040",
+              "0.040 – 0.050",
+              "0.050 – 0.060",
+              "0.060 – 0.070",
+              "0.070 and above"
+            ],
+            "range": [
+              "#c6dbef",
+              "#9ecae1",
+              "#6baed6",
+              "#2171b5",
+              "#08306b"
+            ]
           },
-
           "legend": {
             "title": "Departures per Capita",
             "orient": "right",
-            "gradientLength": 250,
             "titleFontSize": 13,
             "labelFontSize": 11,
-            "format": ".3f"
+            "symbolSize": 200,
+            "symbolType": "square"
           }
         },
 
@@ -96,19 +105,16 @@
             "type": "nominal",
             "title": "State"
           },
-
           {
             "field": "formatted_departures",
             "type": "nominal",
             "title": "Total Departures"
           },
-
           {
             "field": "formatted_population",
             "type": "nominal",
             "title": "Population"
           },
-
           {
             "field": "departures_per_capita",
             "type": "quantitative",
@@ -138,10 +144,7 @@
   ],
 
   "config": {
-    "view": {
-      "stroke": null
-    },
-
+    "view": { "stroke": null },
     "font": "Arial"
   }
 }

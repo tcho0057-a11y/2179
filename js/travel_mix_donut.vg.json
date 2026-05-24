@@ -13,7 +13,7 @@
     "subtitleColor": "#6b7280"
   },
 
-  "width": 350,
+  "width": "container",
   "height": 300,
 
   "data": {

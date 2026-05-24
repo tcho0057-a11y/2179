@@ -4,7 +4,7 @@
 
   "title": {
     "text": "When Australians Travel",
-    "subtitle": "Monthly overseas departure patterns",
+    "subtitle": "Monthly overseas departures · Sep 2025 – Mar 2026",
     "anchor": "start",
     "font": "Georgia",
     "fontSize": 20,
@@ -13,63 +13,159 @@
     "subtitleColor": "#6b7280"
   },
 
-  "width": 650,
-  "height": 160,
+  "width": "container",
+  "height": 280,
 
   "data": {
     "values": [
-      {"year": "2025", "month": "Sep", "departures": 950000},
-      {"year": "2025", "month": "Oct", "departures": 1020000},
-      {"year": "2025", "month": "Nov", "departures": 1100000},
-      {"year": "2025", "month": "Dec", "departures": 1350000},
-      {"year": "2026", "month": "Jan", "departures": 1420000},
-      {"year": "2026", "month": "Feb", "departures": 1210000},
-      {"year": "2026", "month": "Mar", "departures": 1180000}
+      {"month": "Sep 2025", "order": 1, "departures": 950000},
+      {"month": "Oct 2025", "order": 2, "departures": 1020000},
+      {"month": "Nov 2025", "order": 3, "departures": 1100000},
+      {"month": "Dec 2025", "order": 4, "departures": 1350000},
+      {"month": "Jan 2026", "order": 5, "departures": 1420000},
+      {"month": "Feb 2026", "order": 6, "departures": 1210000},
+      {"month": "Mar 2026", "order": 7, "departures": 1180000}
     ]
   },
 
-  "mark": {
-    "type": "rect",
-    "stroke": "#f8f9fb",
-    "strokeWidth": 3
-  },
-
-  "encoding": {
-    "x": {
-      "field": "month",
-      "type": "ordinal",
-      "sort": ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
-      "title": "Month"
-    },
-
-    "y": {
-      "field": "year",
-      "type": "ordinal",
-      "title": "Year"
-    },
-
-    "color": {
-      "field": "departures",
-      "type": "quantitative",
-      "title": "Departures",
-      "scale": {
-        "scheme": "blues"
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "line": false,
+        "color": "#2171b5",
+        "opacity": 0.12
       },
-      "legend": {
-        "format": "~s"
+      "encoding": {
+        "x": {
+          "field": "order",
+          "type": "quantitative",
+          "axis": null
+        },
+        "y": {
+          "field": "departures",
+          "type": "quantitative",
+          "scale": {"zero": false}
+        }
       }
     },
-
-    "tooltip": [
-      {"field": "year", "type": "ordinal", "title": "Year"},
-      {"field": "month", "type": "ordinal", "title": "Month"},
-      {"field": "departures", "type": "quantitative", "title": "Departures", "format": ","}
-    ]
-  },
+    {
+      "mark": {
+        "type": "line",
+        "color": "#2171b5",
+        "strokeWidth": 2.5,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "x": {
+          "field": "order",
+          "type": "quantitative",
+          "axis": null
+        },
+        "y": {
+          "field": "departures",
+          "type": "quantitative",
+          "title": "Departures",
+          "scale": {"zero": false},
+          "axis": {
+            "labelExpr": "datum.value / 1000000 + 'M'",
+            "gridColor": "#e5e7eb"
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "color": "#2171b5",
+        "filled": true,
+        "size": 80
+      },
+      "encoding": {
+        "x": {
+          "field": "order",
+          "type": "quantitative",
+          "axis": null
+        },
+        "y": {
+          "field": "departures",
+          "type": "quantitative",
+          "scale": {"zero": false}
+        },
+        "tooltip": [
+          {"field": "month", "type": "nominal", "title": "Month"},
+          {"field": "departures", "type": "quantitative", "title": "Departures", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -14,
+        "fontSize": 11,
+        "color": "#4b5563"
+      },
+      "encoding": {
+        "x": {
+          "field": "order",
+          "type": "quantitative",
+          "axis": null
+        },
+        "y": {
+          "field": "departures",
+          "type": "quantitative",
+          "scale": {"zero": false}
+        },
+        "text": {
+          "field": "month",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [4, 4],
+        "color": "#e8603c",
+        "strokeWidth": 1.5
+      },
+      "data": {
+        "values": [{"peak": 1420000}]
+      },
+      "encoding": {
+        "y": {
+          "field": "peak",
+          "type": "quantitative",
+          "scale": {"zero": false}
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -6,
+        "dy": -8,
+        "fontSize": 11,
+        "fontStyle": "italic",
+        "color": "#e8603c"
+      },
+      "data": {
+        "values": [{"peak": 1420000, "label": "Peak: Jan 2026"}]
+      },
+      "encoding": {
+        "x": {"value": {"expr": "width"}},
+        "y": {
+          "field": "peak",
+          "type": "quantitative",
+          "scale": {"zero": false}
+        },
+        "text": {"field": "label"}
+      }
+    }
+  ],
 
   "config": {
-    "view": {
-      "stroke": null
-    }
+    "view": {"stroke": null}
   }
 }

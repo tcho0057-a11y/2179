@@ -1,5 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
   "background": "#f8f9fb",
 
   "title": {
@@ -7,57 +8,190 @@
     "subtitle": "Purpose of domestic daytrips, December Quarter 2025",
     "anchor": "start",
     "font": "Georgia",
-    "fontSize": 20,
-    "subtitleFontSize": 12,
+    "fontSize": 30,
+    "fontWeight": "bold",
+    "subtitleFontSize": 15,
     "color": "#1f2937",
     "subtitleColor": "#6b7280"
   },
 
-  "width": 700,
-  "height": 90,
+  "width": "container",
+  "height": 450,
 
   "data": {
     "values": [
-      {"purpose": "Holiday", "trips_million": 36.6},
-      {"purpose": "Visiting Friends and Relatives", "trips_million": 21.5},
-      {"purpose": "Business", "trips_million": 5.0},
-      {"purpose": "Other", "trips_million": 7.6}
+      {
+        "purpose": "Holiday",
+        "trips_million": 36.6,
+        "bubble_size": 36.6,
+        "x": 45,
+        "y": 55
+      },
+      {
+        "purpose": "Visiting Friends and Relatives",
+        "trips_million": 21.5,
+        "bubble_size": 28,
+        "x": 78,
+        "y": 58
+      },
+      {
+        "purpose": "Business",
+        "trips_million": 5.0,
+        "bubble_size": 7,
+        "x": 26,
+        "y": 78
+      },
+      {
+        "purpose": "Other",
+        "trips_million": 7.6,
+        "bubble_size": 10,
+        "x": 63,
+        "y": 28
+      }
     ]
   },
 
-  "mark": {
-    "type": "bar",
-    "cornerRadius": 5
-  },
-
-  "encoding": {
-    "x": {
-      "field": "trips_million",
-      "type": "quantitative",
-      "stack": "normalize",
-      "axis": {
-        "format": ".0%"
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.93,
+        "stroke": "#ffffff",
+        "strokeWidth": 4
       },
-      "title": "Share of Domestic Daytrips"
-    },
 
-    "color": {
-      "field": "purpose",
-      "type": "nominal",
-      "title": "Purpose",
-      "scale": {
-        "range": ["#0d6e8a", "#4ea8de", "#90caf9", "#d6eaf8"]
-      },
-      "legend": {
-        "orient": "bottom"
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100]
+          },
+          "axis": {
+            "title": "Relative Travel Volume Position",
+            "grid": true,
+            "tickCount": 5,
+            "labelColor": "#6b7280",
+            "titleColor": "#374151",
+            "gridColor": "#e5e7eb"
+          }
+        },
+
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100]
+          },
+          "axis": {
+            "title": "Travel Purpose Distribution",
+            "grid": true,
+            "tickCount": 5,
+            "labelColor": "#6b7280",
+            "titleColor": "#374151",
+            "gridColor": "#e5e7eb"
+          }
+        },
+
+        "size": {
+          "field": "bubble_size",
+          "type": "quantitative",
+          "scale": {
+            "range": [7000, 90000]
+          },
+          "legend": null
+        },
+
+        "color": {
+          "field": "purpose",
+          "type": "nominal",
+          "scale": {
+            "range": [
+              "#2b6ea6",
+              "#8ecae6",
+              "#0d6e8a",
+              "#c9dceb"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "bottom",
+            "direction": "horizontal",
+            "labelFontSize": 13,
+            "symbolSize": 250
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "purpose",
+            "type": "nominal",
+            "title": "Purpose"
+          },
+          {
+            "field": "trips_million",
+            "type": "quantitative",
+            "title": "Trips (millions)"
+          }
+        ]
       }
     },
 
-    "tooltip": [
-      {"field": "purpose", "type": "nominal", "title": "Purpose"},
-      {"field": "trips_million", "type": "quantitative", "title": "Trips (millions)"}
-    ]
-  },
+    {
+      "mark": {
+        "type": "text",
+        "font": "Inter",
+        "fontWeight": "bold",
+        "fontSize": 17,
+        "color": "#ffffff",
+        "align": "center"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "purpose"
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "dy": 24,
+        "font": "Inter",
+        "fontSize": 14,
+        "color": "#ffffff"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "trips_million",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ],
 
   "config": {
     "view": {

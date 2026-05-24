@@ -56,13 +56,8 @@
     },
 
     "color": {
-      "field": "departures",
-      "type": "quantitative",
-      "scale": {
-        "scheme": "blues"
-      },
-      "legend": null
-    },
+  "value": "#0d6e8a"
+},
 
     "tooltip": [
       {

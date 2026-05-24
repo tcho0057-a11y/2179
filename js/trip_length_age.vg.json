@@ -11,7 +11,7 @@
     "color": "#1f2937",
     "subtitleColor": "#6b7280"
   },
-  "width": 650,
+  "width": "container",
   "height": 300,
   "data": {
     "values": [

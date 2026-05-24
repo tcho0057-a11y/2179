@@ -4,276 +4,311 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Where Do Australians Travel?</title>
-
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<section class="hero-section">
-
-  <div class="hero-left">
-    <p class="eyebrow">FIT2179 · Data Visualisation</p>
-
-    <h1>
-      Where Do Australians Travel?
-    </h1>
-
-    <p class="hero-description">
-      An analytical visualization of Australian tourism dynamics, contrasting domestic and international travel patterns across different states, seasons, and regional preferences.
-    </p>
-  </div>
-
-  <div class="hero-right">
-
-    <div class="hero-stat-card">
-      <span class="hero-number">21M+</span>
-      <span class="hero-label">
-        Overseas departures in 2025
-      </span>
-    </div>
-
-    <div class="hero-stat-card">
-      <span class="hero-number">$27B</span>
-      <span class="hero-label">
-        Domestic tourism expenditure
-      </span>
-    </div>
-
-  </div>
-
-</section>
 <body>
-<section class="section travel-state-section">
-  <div class="sec-heading">
-    <span class="sec-num">1</span>
-    <span>Which State Travels the Most?</span>
-  </div>
 
-  <div class="pill pill-coral">By State of Residence</div>
+  <header class="hero-section">
+    <div class="hero-header-full">
+      <div class="eyebrow">FIT2179 · DATA VISUALISATION</div>
+      <h1>Where Do Australians Travel?</h1>
+      <div class="source-line">Sources: Tourism Research Australia, Australian Bureau of Statistics</div>
+    </div>
 
-  <p class="narr">
-    NSW and VIC send the most travellers abroad. But per capita, WA and ACT punch above their weight.
-    This section asks: does where you live predict how much you travel?
-  </p>
+    <div class="hero-body-split">
+      <div class="hero-left">
+        <p class="hero-description">
+          An analytical visualization of Australian tourism dynamics, 
+          contrasting domestic and international travel patterns across different states, 
+          seasons, and regional preferences. 
+          
+          This dashboard tracks how state populations alter outward travel behavior, 
+          visualizes the seasonal rhythms of holiday migration trends, 
+          and breaks down total economic impact to uncover whether residents prefer exploring localized regional gems 
+          or departing for major international hubs.
+        </p>
+      </div>
+      
+      <div class="hero-right">
+        <div class="hero-cards-row">
+          <div class="hero-stat-card">
+            <span class="hero-number">21M+</span>
+            <span class="hero-label">Overseas departures in 2025</span>
+          </div>
+          <div class="hero-stat-card">
+            <span class="hero-number">$27B</span>
+            <span class="hero-label">Domestic tourism expenditure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-  <div class="two-chart-grid">
+  <nav class="top-nav">
+    <a href="#state-travel">Which State Travels the Most?</a>
+    <a href="#overseas-destinations">Where Do Australians Go Overseas?</a>
+    <a href="#seasonality">When Do Australians Travel?</a>
+    <a href="#domestic-vs-international">Overseas vs. Staying Home</a>
+    <a href="#trip-length">Who Takes Longer Domestic Trips?</a>
+    <a href="#expenditure">Where Do Domestic Travellers Spend Most?</a>
+    <a href="#travel-purpose">Why Do Australians Travel?</a>
+  </nav>
 
-    <div class="chart-card">
-      <div id="map_departures_state"></div>
+  <section id="state-travel" class="section travel-state-section">  
+    <div class="sec-heading">
+      <span class="sec-num">1</span>
+      <span>Which State Travels the Most?</span>
+    </div>
 
-      <div class="chart-annotation">
-        NSW darkest; Tasmania lightest
+    <div class="pill pill-coral">By State of Residence</div>
+
+    <p class="narr">
+      NSW and VIC send the most travellers abroad. But per capita, WA and ACT punch above their weight.
+      This section asks: does where you live predict how much you travel?
+    </p>
+
+    <div class="two-chart-grid">
+      <div class="chart-card">
+        <div id="map_departures_state"></div>
+        <div class="chart-annotation">NSW darkest; Tasmania lightest</div>
+      </div>
+
+      <div class="chart-card">
+        <div id="bar_departures_state"></div>
+        <div class="chart-annotation">NSW and VIC dominate outbound travel</div>
       </div>
     </div>
 
-    <div class="chart-card">
-      <div id="bar_departures_state"></div>
+    <div class="chart-card full-width-card" style="margin-top: 1.4rem; display: block; width: 100%; box-sizing: border-box;">
+      
+      <div id="bar_per_capita_state" style="width: 100%; display: block;"></div>
 
-      <div class="chart-annotation">
-        NSW and VIC dominate outbound travel
+      <div class="dashboard-bottom-bar" style="background: #ffffff; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; border-radius: 8px; border-top: 1px dashed #bbb5ab; margin-top: 1rem;">
+        
+        <div class="filter-group" style="display: flex; flex-direction: row; align-items: center; gap: 1rem; flex-wrap: wrap;">
+          <label for="state-selector" style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #0d6e8a; letter-spacing: 0.05em; white-space: nowrap;">Select Regional View:</label>
+          <select id="state-selector" class="sidebar-dropdown" style="max-width: 300px; padding: 0.6rem; border-radius: 6px; border: 1.5px solid #bbb5ab; font-size: 0.95rem; background: #f8f9fb;">
+            <option value="All States">All States (National View)</option>
+            <option value="New South Wales">New South Wales</option>
+            <option value="Victoria">Victoria</option>
+            <option value="Queensland">Queensland</option>
+            <option value="Western Australia">Western Australia</option>
+            <option value="South Australia">South Australia</option>
+            <option value="Tasmania">Tasmania</option>
+            <option value="Australian Capital Territory">Australian Capital Territory</option>
+            <option value="Northern Territory">Northern Territory</option>
+          </select>
+        </div>
+
+        <div class="insight-container" style="padding-top: 0.5rem;">
+          <h3 id="insight-title" style="font-family: Georgia, serif; font-size: 1.2rem; font-weight: 700; color: #1f2937; margin: 0 0 0.4rem 0;">National Overview</h3>
+          <p id="insight-text" style="font-family: Georgia, serif; font-style: italic; font-size: 1.05rem; line-height: 1.5; color: #e8603c; margin: 0;">
+            Select an individual state from the dropdown filter above to view targeted regional insights and per-capita behavioral trends.
+          </p>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-  <div class="chart-card full-width-card">
-  <div id="bar_per_capita_state"></div>
+  <section id="overseas-destinations" class="section destination-section">  
+    <div class="sec-heading">
+      <span class="sec-num">2</span>
+      <span>Where Do Australians Go Overseas?</span>
+    </div>
 
+    <div class="pill pill-coral">International Destinations</div>
 
-  <div class="chart-annotation">
-    ACT and WA rise when population is considered
-  </div>
-</div>
-</section>
+    <p class="narr">
+      New Zealand, Indonesia and Japan are among the most popular overseas destinations for Australian travellers.
+      This chart shows the top short-term destination countries and highlights the strong pull of the Asia-Pacific region.
+    </p>
+
+    <div class="chart-card destination-card">
+      <div id="bar_top_destinations"></div>
+      <div class="chart-annotation">New Zealand and Indonesia lead Australian outbound travel</div>
+    </div>
+    
+    <div class="chart-card destination-card">
+      <div id="world_destination_map"></div>
+      <div class="chart-annotation">Australian outbound travel is concentrated around Asia-Pacific destinations</div>
+      <div class="chart-annotation">Move the slider to isolate the most popular destinations: New Zealand and Indonesia remain dominant</div>
+    </div>
+  </section>
+
+  <section id="seasonality" class="section seasonality-section">  
+    <div class="sec-heading">
+      <span class="sec-num">3</span>
+      <span>When Do Australians Travel?</span>
+    </div>
+
+    <div class="pill pill-coral">Seasonality</div>
+
+    <p class="narr">
+      Australian overseas travel follows a seasonal rhythm, with stronger travel activity around holiday periods.
+      This heatmap shows which months attract the highest number of departures.
+    </p>
+
+    <div class="chart-card destination-card">
+      <div id="heatmap_seasonality"></div>
+      <div class="chart-annotation">Holiday periods create visible spikes in overseas departures</div>
+    </div>
+  </section>
+
+  <section id="domestic-vs-international" class="section">  
+    <div class="sec-heading">
+      <span class="sec-num">4</span>
+      <span>Overseas vs. Staying Home</span>
+    </div>
+
+    <div class="section-tag">DOMESTIC VS INTERNATIONAL (TWO SOURCES)</div>
+
+    <p class="narr">
+      Australians travel heavily both domestically and internationally. 
+      This section compares domestic overnight trips with overseas departures 
+      to reveal which states travel most overall and how Australia's travel mix is distributed.
+    </p>
+
+    <div class="two-chart-grid">
+      <div class="chart-card">
+        <div id="domestic_vs_international"></div>
+        <div class="chart-annotation">NSW dominates both domestic and international travel activity</div>
+      </div>
+
+      <div class="chart-card">
+        <div id="travel_mix_donut"></div>
+        <div class="chart-annotation">Domestic overnight travel remains significantly larger overall</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trip-length" class="section">  
+    <div class="sec-heading">
+      <span class="sec-num">5</span>
+      <span>Who Takes Longer Domestic Trips?</span>
+    </div>
+
+    <div class="pill pill-coral">Trip Length and Age</div>
+
+    <p class="narr">
+      Longer domestic trips are more common among older Australians. As trip length increases,
+      the share of travellers aged 60 and over becomes much larger.
+    </p>
+
+    <div class="chart-card destination-card">
+      <div id="trip_length_age"></div>
+      <div class="chart-annotation">Travellers aged 60+ make up half of trips lasting 15 nights or longer</div>
+    </div>
+  </section>
+
+  <section id="expenditure" class="section">  
+    <div class="sec-heading">
+      <span class="sec-num">6</span>
+      <span>Where Do Domestic Travellers Spend Most?</span>
+    </div>
+
+    <div class="pill pill-coral">Domestic Expenditure</div>
+
+    <p class="narr">
+      Domestic travel spending is concentrated in the larger tourism states, especially New South Wales, Queensland and Victoria.
+    </p>
+
+    <div class="chart-card destination-card">
+      <div id="regional_expenditure_dotplot"></div>
+      <div class="chart-annotation">NSW records the highest domestic tourism expenditure</div>
+    </div>
+  </section>
+
+  <section id="travel-purpose" class="section">  
+    <div class="sec-heading">
+      <span class="sec-num">7</span>
+      <span>Why Do Australians Travel?</span>
+    </div>
+
+    <p class="narr">
+      Holiday travel dominates Australian domestic tourism, while visiting friends and relatives also forms a major share of trips.
+    </p>
+
+    <div class="chart-card destination-card">
+      <div id="travel_purpose"></div>
+    </div>
+  </section>
 
   <script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
-<script>
-  vegaEmbed("#map_departures_state", "js/map_departures_state.vg.json", {
-    actions: false
-  });
 
-  vegaEmbed("#bar_departures_state", "js/bar_departures_state.vg.json", {
-    actions: false
-  });
-
-  vegaEmbed("#bar_per_capita_state", "js/bar_per_capita_state.vg.json", {
-    actions: false
-  });
-
-  vegaEmbed("#bar_top_destinations", "js/bar_top_destinations.vg.json", {
-    actions: false
-  });
-  vegaEmbed("#world_destination_map", "js/world_destination_map.vg.json", {
-  actions: false
-  });
-  vegaEmbed("#heatmap_seasonality", "js/heatmap_seasonality.vg.json", {
-  actions: false
-  });
-  vegaEmbed("#domestic_vs_international", "js/domestic_vs_international.vg.json", {
-    actions: false
-  });
-
-  vegaEmbed("#travel_mix_donut", "js/travel_mix_donut.vg.json", {
-    actions: false
-  });
-  vegaEmbed("#trip_length_age", "js/trip_length_age.vg.json", {
-  actions: false
-});
-vegaEmbed("#regional_expenditure_dotplot", "js/regional_expenditure_dotplot.vg.json", {
-  actions: false
-});
-vegaEmbed("#travel_purpose", "js/travel_purpose.vg.json", {
-  actions: false
-});
+  <script>
+    // Embed code
+    vegaEmbed("#map_departures_state", "js/map_departures_state.vg.json", { actions: false });
+    vegaEmbed("#bar_departures_state", "js/bar_departures_state.vg.json", { actions: false });
     
-</script>
-</script>
-<section class="section destination-section">
-  <div class="sec-heading">
-    <span class="sec-num">2</span>
-    <span>Where Do Australians Go Overseas?</span>
-  </div>
+    // Bind your Vega-lite chart selection param directly to our HTML dropdown element
+    vegaEmbed("#bar_per_capita_state", "js/bar_per_capita_state.vg.json", { actions: false });
 
-  <div class="pill pill-coral">International Destinations</div>
+    vegaEmbed("#bar_top_destinations", "js/bar_top_destinations.vg.json", { actions: false });
+    vegaEmbed("#world_destination_map", "js/world_destination_map.vg.json", { actions: false });
+    vegaEmbed("#heatmap_seasonality", "js/heatmap_seasonality.vg.json", { actions: false });
+    vegaEmbed("#domestic_vs_international", "js/domestic_vs_international.vg.json", { actions: false });
+    vegaEmbed("#travel_mix_donut", "js/travel_mix_donut.vg.json", { actions: false });
+    vegaEmbed("#trip_length_age", "js/trip_length_age.vg.json", { actions: false });
+    vegaEmbed("#regional_expenditure_dotplot", "js/regional_expenditure_dotplot.vg.json", { actions: false });
+    vegaEmbed("#travel_purpose", "js/travel_purpose.vg.json", { actions: false });
 
-  <p class="narr">
-    New Zealand, Indonesia and Japan are among the most popular overseas destinations for Australian travellers.
-    This chart shows the top short-term destination countries and highlights the strong pull of the Asia-Pacific region.
-  </p>
+    // JS Handler to switch text inside the new sidebar box
+    document.addEventListener("DOMContentLoaded", function () {
+      const annotations = {
+        "All States": {
+          title: "National Overview",
+          text: "Select an individual state from the dropdown filter above to view targeted regional insights and per-capita behavioral trends."
+        },
+        "New South Wales": {
+          title: "New South Wales",
+          text: "NSW maintains the absolute largest volume of international departures nationwide, anchored directly by Sydney Airport's massive international flight capacity."
+        },
+        "Victoria": {
+          title: "Victoria",
+          text: "Victoria reflects stable, highly consistent baseline travel trends, showing distinct, tight seasonal patterns during domestic winter holiday blocks."
+        },
+        "Queensland": {
+          title: "Queensland",
+          text: "Queensland residents show a distinct preference for domestic travel corridors, prioritizing regional coastal exploration over long-haul global flights."
+        },
+        "Western Australia": {
+          title: "Western Australia",
+          text: "WA punches heavily above its weight per capita. Due to geographic isolation from eastern hubs, international travel to Southeast Asian networks is often highly cost-effective."
+        },
+        "South Australia": {
+          title: "South Australia",
+          text: "South Australia's numbers trace closely to localized domestic leisure networks and wine region events, keeping outbound travel closer to home."
+        },
+        "Tasmania": {
+          title: "Tasmania",
+          text: "Tasmania registers fewer immediate global departures overall, but residents exhibit much longer average durations of stay when they plan holiday trips."
+        },
+        "Australian Capital Territory": {
+          title: "Australian Capital Territory",
+          text: "The ACT shows an exceptionally high travel propensity per person, heavily driven by higher baseline average household disposable incomes."
+        },
+        "Northern Territory": {
+          title: "Northern Territory",
+          text: "The NT exhibits unique travel cycles strongly dictated by tropical seasons, relying significantly on inbound arrivals rather than outbound resident migration."
+        }
+      };
 
-  <div class="chart-card destination-card">
-    <div id="bar_top_destinations"></div>
+      const selector = document.getElementById("state-selector");
+      const heading = document.getElementById("insight-title");
+      const bodyText = document.getElementById("insight-text");
 
-    <div class="chart-annotation">
-    New Zealand and Indonesia lead Australian outbound travel
-    </div>
-  </div>
-  <div class="chart-card destination-card">
-  <div id="world_destination_map"></div>
-
-  <div class="chart-annotation">
-   Australian outbound travel is concentrated around Asia-Pacific destinations
-  </div>
-  <div class="chart-annotation">
-   Move the slider to isolate the most popular destinations:  New Zealand and Indonesia remain dominant
-</div>
-</div>
-</section>
-<section class="section seasonality-section">
-  <div class="sec-heading">
-    <span class="sec-num">3</span>
-    <span>When Do Australians Travel?</span>
-
-  </div>
-
-  <div class="pill pill-coral">Seasonality</div>
-
-  <p class="narr">
-    Australian overseas travel follows a seasonal rhythm, with stronger travel activity around holiday periods.
-    This heatmap shows which months attract the highest number of departures.
-  </p>
-
-  <div class="chart-card destination-card">
-    <div id="heatmap_seasonality"></div>
-
-    <div class="chart-annotation">
-    Holiday periods create visible spikes in overseas departures
-    </div>
-  </div>
-</section>
-<section class="section">
-  <div class="sec-heading">
-    <span class="sec-num">4</span>
-    <span>Overseas vs. Staying Home</span>
-  </div>
-
-  <div class="section-tag">
-    DOMESTIC VS INTERNATIONAL (TWO SOURCES)
-  </div>
-
-  <p class="narr">
-    Australians travel heavily both domestically and internationally. 
-    This section compares domestic overnight trips with overseas departures 
-    to reveal which states travel most overall and how Australia's travel mix is distributed.
-  </p>
-
-  <div class="two-chart-grid">
-
-    <div class="chart-card">
-      <div id="domestic_vs_international"></div>
-
-      <div class="chart-annotation">
-        NSW dominates both domestic and international travel activity
-      </div>
-    </div>
-
-    <div class="chart-card">
-      <div id="travel_mix_donut"></div>
-
-      <div class="chart-annotation">
-         Domestic overnight travel remains significantly larger overall
-      </div>
-    </div>
-
-  </div>
-</section>
-<section class="section">
-  <div class="sec-heading">
-    <span class="sec-num">5</span>
-    <span>Who Takes Longer Domestic Trips?</span>
-  </div>
-
-  <div class="pill pill-coral">Trip Length and Age</div>
-
-  <p class="narr">
-    Longer domestic trips are more common among older Australians. As trip length increases,
-    the share of travellers aged 60 and over becomes much larger.
-  </p>
-
-  <div class="chart-card destination-card">
-    <div id="trip_length_age"></div>
-
-
-    <div class="chart-annotation">
-     Travellers aged 60+ make up half of trips lasting 15 nights or longer
-    </div>
-  </div>
-</section>
-<section class="section">
-  <div class="sec-heading">
-    <span class="sec-num">6</span>
-    <span>Where Do Domestic Travellers Spend Most?</span>
-  </div>
-
-  <div class="pill pill-coral">Domestic Expenditure</div>
-
-  <p class="narr">
-    Domestic travel spending is concentrated in the larger tourism states, especially New South Wales, Queensland and Victoria.
-  </p>
-
-  <div class="chart-card destination-card">
-    <div id="regional_expenditure_dotplot"></div>
-
-
-    <div class="chart-annotation">
-       NSW records the highest domestic tourism expenditure
-    </div>
-  </div>
-</section>
-<section class="section">
-  <div class="sec-heading">
-    <span class="sec-num">7</span>
-    <span>Why Do Australians Travel?</span>
-  </div>
-
-
-  <p class="narr">
-    Holiday travel dominates Australian domestic tourism, while visiting friends and relatives also forms a major share of trips.
-  </p>
-
-  <div class="chart-card destination-card">
-    <div id="travel_purpose"></div>
-
-  </div>
-</section>
+      if(selector) {
+        selector.addEventListener("change", function () {
+          const selected = selector.value;
+          if (annotations[selected]) {
+            heading.textContent = annotations[selected].title;
+            bodyText.textContent = annotations[selected].text;
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
