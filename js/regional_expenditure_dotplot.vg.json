@@ -1,66 +1,124 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "background": "#f8f9fb",
-
+  "background": "#fbf7f0",
   "title": {
     "text": "Where Domestic Travellers Spend Most",
     "subtitle": "Regional expenditure by state, December Quarter 2025",
     "anchor": "start",
     "font": "Georgia",
-    "fontSize": 20,
-    "subtitleFontSize": 12,
+    "fontSize": 26,
+    "fontWeight": "bold",
+    "subtitleFontSize": 14,
     "color": "#1f2937",
     "subtitleColor": "#6b7280"
   },
-
   "width": "container",
-  "height": 320,
-
+  "height": 340,
   "data": {
     "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/regional_expenditure.csv"
   },
-
-  "mark": {
-    "type": "circle",
-    "size": 180,
-    "color": "#0d6e8a",
-    "opacity": 0.9
-  },
-
   "encoding": {
     "y": {
       "field": "state",
       "type": "nominal",
-      "sort": "-x",
-      "title": null
-    },
-
-    "x": {
-      "field": "expenditure_million",
-      "type": "quantitative",
-      "title": "Regional expenditure ($ million)",
+      "sort": {"field": "expenditure_million", "order": "descending"},
       "axis": {
-        "values": [0, 2000, 4000, 6000, 8000],
-        "labelExpr": "'$' + datum.value / 1000 + 'B'",
-        "gridColor": "#e5e7eb"
+        "labelFontSize": 13,
+        "labelColor": "#374151",
+        "title": null
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "color": "#cbd5e1"
+      },
+      "encoding": {
+        "x": { "field": "expenditure_million", "type": "quantitative" }
       }
     },
-
-    "tooltip": [
-      {
-        "field": "state",
-        "type": "nominal",
-        "title": "State"
+    {
+      "mark": {
+        "type": "circle",
+        "size": 220,
+        "color": "#0d6e8a",
+        "opacity": 0.9,
+        "stroke": "#fbf7f0",
+        "strokeWidth": 2
       },
-      {
-        "field": "expenditure_million",
-        "type": "quantitative",
-        "title": "Expenditure ($m)",
-        "format": ","
+      "encoding": {
+        "x": {
+          "field": "expenditure_million",
+          "type": "quantitative",
+          "axis": {
+            "values": [0, 2000, 4000, 6000, 8000],
+            "labelExpr": "'$' + datum.value/1000 + 'B'",
+            "gridColor": "#e5e7eb",
+            "labelFontSize": 13,
+            "titleFontSize": 15,
+            "title": "Regional expenditure ($ billion)",
+            "titleColor": "#1f2937"
+          }
+        },
+        "tooltip": [
+          { "field": "state", "type": "nominal", "title": "State" },
+          { "field": "expenditure_million", "type": "quantitative", "title": "Expenditure ($m)", "format": "," }
+        ]
       }
-    ]
-  },
-
+    },
+    {
+      "transform": [{ "filter": "datum.state == 'New South Wales'" }],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -15,
+        "dy": -12,
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "font": "Georgia",
+        "color": "#1f2937"
+      },
+      "encoding": {
+        "x": { "field": "expenditure_million", "type": "quantitative" },
+        "text": { "value": "NSW dominates spending" }
+      }
+    },
+    {
+      "transform": [{ "filter": "datum.state == 'Queensland'" }],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 15,
+        "dy": 18,
+        "fontSize": 13,
+        "font": "Georgia",
+        "color": "#4b5563"
+      },
+      "encoding": {
+        "x": { "field": "expenditure_million", "type": "quantitative" },
+        "text": { "value": "Strong tourism economy" }
+      }
+    },
+    {
+      "transform": [{ "filter": "datum.state == 'Tasmania'" }],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 15,
+        "dy": -10,
+        "fontSize": 13,
+        "font": "Georgia",
+        "color": "#4b5563"
+      },
+      "encoding": {
+        "x": { "field": "expenditure_million", "type": "quantitative" },
+        "text": { "value": "Lower overall expenditure" }
+      }
+    }
+  ],
   "config": {
     "view": {
       "stroke": null

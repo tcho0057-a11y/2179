@@ -16,38 +16,14 @@
   },
 
   "width": "container",
-  "height": 450,
+  "height": 380,
 
   "data": {
     "values": [
-      {
-        "purpose": "Holiday",
-        "trips_million": 36.6,
-        "bubble_size": 36.6,
-        "x": 45,
-        "y": 55
-      },
-      {
-        "purpose": "Visiting Friends and Relatives",
-        "trips_million": 21.5,
-        "bubble_size": 28,
-        "x": 78,
-        "y": 58
-      },
-      {
-        "purpose": "Business",
-        "trips_million": 5.0,
-        "bubble_size": 7,
-        "x": 26,
-        "y": 78
-      },
-      {
-        "purpose": "Other",
-        "trips_million": 7.6,
-        "bubble_size": 10,
-        "x": 63,
-        "y": 28
-      }
+      {"purpose": "Holiday",                      "trips_million": 36.6, "bubble_size": 36.6, "x": 30, "y": 55},
+      {"purpose": "Visiting Friends and Relatives","trips_million": 21.5, "bubble_size": 28,   "x": 65, "y": 55},
+      {"purpose": "Other",                         "trips_million": 7.6,  "bubble_size": 10,   "x": 52, "y": 30},
+      {"purpose": "Business",                      "trips_million": 5.0,  "bubble_size": 7,    "x": 18, "y": 30}
     ]
   },
 
@@ -56,134 +32,74 @@
       "mark": {
         "type": "circle",
         "opacity": 0.93,
-        "stroke": "#ffffff",
+        "stroke": "#f8f9fb",
         "strokeWidth": 4
       },
-
       "encoding": {
         "x": {
           "field": "x",
           "type": "quantitative",
-          "scale": {
-            "domain": [0, 100]
-          },
-          "axis": {
-            "title": "Relative Travel Volume Position",
-            "grid": true,
-            "tickCount": 5,
-            "labelColor": "#6b7280",
-            "titleColor": "#374151",
-            "gridColor": "#e5e7eb"
-          }
+          "scale": {"domain": [0, 90]},
+          "axis": null
         },
-
         "y": {
           "field": "y",
           "type": "quantitative",
-          "scale": {
-            "domain": [0, 100]
-          },
-          "axis": {
-            "title": "Travel Purpose Distribution",
-            "grid": true,
-            "tickCount": 5,
-            "labelColor": "#6b7280",
-            "titleColor": "#374151",
-            "gridColor": "#e5e7eb"
-          }
+          "scale": {"domain": [0, 90]},
+          "axis": null
         },
-
         "size": {
           "field": "bubble_size",
           "type": "quantitative",
-          "scale": {
-            "range": [7000, 90000]
-          },
+          "scale": {"range": [7000, 90000]},
           "legend": null
         },
-
         "color": {
           "field": "purpose",
           "type": "nominal",
           "scale": {
-            "range": [
-              "#2b6ea6",
-              "#8ecae6",
-              "#0d6e8a",
-              "#c9dceb"
-            ]
+            "domain": ["Holiday", "Visiting Friends and Relatives", "Other", "Business"],
+            "range": ["#8ecae6", "#c9dceb", "#0d6e8a", "#2b6ea6"]
           },
-          "legend": {
-            "title": null,
-            "orient": "bottom",
-            "direction": "horizontal",
-            "labelFontSize": 13,
-            "symbolSize": 250
-          }
+          "legend": null
         },
-
         "tooltip": [
-          {
-            "field": "purpose",
-            "type": "nominal",
-            "title": "Purpose"
-          },
-          {
-            "field": "trips_million",
-            "type": "quantitative",
-            "title": "Trips (millions)"
-          }
+          {"field": "purpose",       "type": "nominal",      "title": "Purpose"},
+          {"field": "trips_million", "type": "quantitative", "title": "Trips (millions)", "format": ".1f"}
         ]
       }
     },
-
     {
       "mark": {
         "type": "text",
-        "font": "Inter",
+        "font": "Georgia",
         "fontWeight": "bold",
-        "fontSize": 17,
+        "fontSize": 15,
         "color": "#ffffff",
-        "align": "center"
+        "align": "center",
+        "baseline": "middle",
+        "dy": -10
       },
-
       "encoding": {
-        "x": {
-          "field": "x",
-          "type": "quantitative"
-        },
-
-        "y": {
-          "field": "y",
-          "type": "quantitative"
-        },
-
-        "text": {
-          "field": "purpose"
-        }
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "purpose"}
       }
     },
-
     {
       "mark": {
         "type": "text",
-        "dy": 24,
-        "font": "Inter",
-        "fontSize": 14,
-        "color": "#ffffff"
+        "font": "Georgia",
+        "fontSize": 20,
+        "fontWeight": "bold",
+        "color": "#ffffff",
+        "align": "center",
+        "baseline": "middle",
+        "dy": 14
       },
-
       "encoding": {
-        "x": {
-          "field": "x",
-          "type": "quantitative"
-        },
-
-        "y": {
-          "field": "y",
-          "type": "quantitative"
-        },
-
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {"field": "y", "type": "quantitative"},
         "text": {
           "field": "trips_million",
           "type": "quantitative",
@@ -194,8 +110,6 @@
   ],
 
   "config": {
-    "view": {
-      "stroke": null
-    }
+    "view": {"stroke": null}
   }
 }
