@@ -1,6 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "background": "#fbf7f0",
+  
+  "padding": {"top": 10, "left": 10, "bottom": 10, "right": 100},
+
   "title": {
     "text": "Where Domestic Travellers Spend Most",
     "subtitle": "Regional expenditure by state, December Quarter 2025",
@@ -76,14 +79,14 @@
         "align": "right",
         "dx": -15,
         "dy": -12,
-        "fontSize": 14,
-        "fontWeight": "bold",
+        "fontSize": 13,
+        "fontStyle": "italic",
         "font": "Georgia",
         "color": "#1f2937"
       },
       "encoding": {
         "x": { "field": "expenditure_million", "type": "quantitative" },
-        "text": { "value": "NSW dominates spending" }
+        "text": { "value": "NSW anchors spend via premium corporate & urban hubs" }
       }
     },
     {
@@ -92,14 +95,16 @@
         "type": "text",
         "align": "left",
         "dx": 15,
-        "dy": 18,
-        "fontSize": 13,
+        "dy": 15,
+        "fontSize": 12,
+        "fontStyle": "italic",
         "font": "Georgia",
-        "color": "#4b5563"
+        "color": "#4b5563",
+        "clip": false 
       },
       "encoding": {
         "x": { "field": "expenditure_million", "type": "quantitative" },
-        "text": { "value": "Strong tourism economy" }
+        "text": { "value": "Strong leisure holiday market drives high yields" }
       }
     },
     {
@@ -108,14 +113,15 @@
         "type": "text",
         "align": "left",
         "dx": 15,
-        "dy": -10,
-        "fontSize": 13,
+        "dy": -2,
+        "fontSize": 12,
+        "fontStyle": "italic",
         "font": "Georgia",
         "color": "#4b5563"
       },
       "encoding": {
         "x": { "field": "expenditure_million", "type": "quantitative" },
-        "text": { "value": "Lower overall expenditure" }
+        "text": { "value": "Niche eco-tourism with lower absolute capacity" }
       }
     }
   ],
