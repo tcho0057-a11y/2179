@@ -23,54 +23,149 @@
   {"purpose": "Business",                     "pct": 5.0,  "size": 12000, "x": 90, "y": 50, "lx": 90, "ly": 90}
 ]
   },
+  
   "layer": [
     {
-      "mark": {"type": "rule", "strokeWidth": 1.5, "strokeDash": [4, 3], "opacity": 0.6},
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 1.5,
+        "strokeDash": [4, 3],
+        "opacity": 0.6
+      },
       "encoding": {
-        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]},
+          "axis": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]},
+          "axis": null
+        },
         "x2": {"field": "lx"},
         "y2": {"field": "ly"},
         "color": {"value": "#9ca3af"}
       }
     },
+
     {
-      "mark": {"type": "circle", "opacity": 0.92, "stroke": "#f8f9fb", "strokeWidth": 5},
+      "mark": {
+        "type": "circle",
+        "opacity": 0.92,
+        "stroke": "#f8f9fb",
+        "strokeWidth": 5
+      },
       "encoding": {
-        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-"size": {"field": "size", "type": "quantitative", "scale": {"range": [5000, 55000]}, "legend": null},
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]},
+          "axis": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]},
+          "axis": null
+        },
+        "size": {
+          "field": "size",
+          "type": "quantitative",
+          "scale": {"range": [5000, 55000]},
+          "legend": null
+        },
         "color": {
-          "field": "purpose", "type": "nominal",
+          "field": "purpose",
+          "type": "nominal",
           "scale": {
-            "domain": ["Holiday", "Visiting Friends & Relatives", "Education & Health", "Business", "Other"],
-            "range": ["#0d6e8a", "#156082", "#219ebc", "#0b3954", "#8ecae6"]
+            "domain": [
+              "Holiday",
+              "Visiting Friends & Relatives",
+              "Education & Health",
+              "Business",
+              "Other"
+            ],
+            "range": [
+              "#0d6e8a",
+              "#156082",
+              "#219ebc",
+              "#0b3954",
+              "#8ecae6"
+            ]
           },
           "legend": null
         },
         "tooltip": [
-          {"field": "purpose", "type": "nominal", "title": "Purpose"},
-          {"field": "pct", "type": "quantitative", "title": "Share (%)", "format": ".1f"}
+          {
+            "field": "purpose",
+            "type": "nominal",
+            "title": "Purpose"
+          },
+          {
+            "field": "pct",
+            "type": "quantitative",
+            "title": "Share (%)",
+            "format": ".1f"
+          }
         ]
       }
     },
+
     {
-      "mark": {"type": "text", "font": "Georgia", "fontWeight": "bold", "fontSize": 22, "fill": "#ffffff", "align": "center", "baseline": "middle", "dy": 0},
+      "mark": {
+        "type": "text",
+        "font": "Georgia",
+        "fontWeight": "bold",
+        "fontSize": 22,
+        "fill": "#ffffff",
+        "align": "center",
+        "baseline": "middle"
+      },
       "encoding": {
         "x": {"field": "x", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},
-        "text": {"field": "pct", "type": "quantitative", "format": ".1f"}
+        "text": {
+          "field": "pct",
+          "type": "quantitative",
+          "format": ".1f"
+        }
       }
     },
+
     {
-      "mark": {"type": "text", "font": "Georgia", "fontWeight": "bold", "fontSize": 13, "fill": "#1f2937", "align": "center", "baseline": "middle"},
+      "mark": {
+        "type": "text",
+        "font": "Georgia",
+        "fontWeight": "bold",
+        "fontSize": 13,
+        "fill": "#1f2937",
+        "baseline": "middle"
+      },
       "encoding": {
-        "x": {"field": "lx", "type": "quantitative", "scale": {"domain": [0, 100]}},
-        "y": {"field": "ly", "type": "quantitative", "scale": {"domain": [0, 100]}},
-        "text": {"field": "purpose", "type": "nominal"},
-        "align": {"field": "anchor", "type": "nominal", "scale": {"domain": ["start", "end"], "range": ["left", "right"]}}
+        "x": {
+          "field": "lx",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]}
+        },
+        "y": {
+          "field": "ly",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]}
+        },
+        "text": {
+          "field": "purpose",
+          "type": "nominal"
+        }
       }
     }
   ],
-  "config": {"view": {"stroke": null}}
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
 }
