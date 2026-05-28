@@ -11,25 +11,22 @@
     "color": "#1f2937",
     "subtitleColor": "#6b7280"
   },
-  "width": "container",
-  "height": 300,
+  "width": 220,
+  "height": 320,
   "data": {
     "values": [
       {"trip_length": "1-3 nights", "age_group": "14-29", "percentage": 25},
       {"trip_length": "1-3 nights", "age_group": "30-44", "percentage": 27},
       {"trip_length": "1-3 nights", "age_group": "45-59", "percentage": 23},
       {"trip_length": "1-3 nights", "age_group": "60+", "percentage": 25},
-
       {"trip_length": "4-7 nights", "age_group": "14-29", "percentage": 24},
       {"trip_length": "4-7 nights", "age_group": "30-44", "percentage": 24},
       {"trip_length": "4-7 nights", "age_group": "45-59", "percentage": 22},
       {"trip_length": "4-7 nights", "age_group": "60+", "percentage": 30},
-
       {"trip_length": "8-14 nights", "age_group": "14-29", "percentage": 20},
       {"trip_length": "8-14 nights", "age_group": "30-44", "percentage": 23},
       {"trip_length": "8-14 nights", "age_group": "45-59", "percentage": 21},
       {"trip_length": "8-14 nights", "age_group": "60+", "percentage": 37},
-
       {"trip_length": "15+ nights", "age_group": "14-29", "percentage": 16},
       {"trip_length": "15+ nights", "age_group": "30-44", "percentage": 17},
       {"trip_length": "15+ nights", "age_group": "45-59", "percentage": 17},
@@ -37,23 +34,23 @@
     ]
   },
   "mark": {
-    "type": "bar"
+    "type": "bar",
+    "cornerRadiusTopLeft": 3,
+    "cornerRadiusTopRight": 3
   },
   "encoding": {
     "x": {
-      "field": "percentage",
-      "type": "quantitative",
-      "stack": "normalize",
-      "title": "Share of trips",
-      "axis": {
-        "format": ".0%"
-      }
+      "field": "age_group",
+      "type": "ordinal",
+      "title": null,
+      "sort": ["14-29", "30-44", "45-59", "60+"],
+      "axis": {"labelAngle": 0}
     },
     "y": {
-      "field": "trip_length",
-      "type": "ordinal",
-      "sort": ["1-3 nights", "4-7 nights", "8-14 nights", "15+ nights"],
-      "title": "Trip length"
+      "field": "percentage",
+      "type": "quantitative",
+      "title": "Share of trips (%)",
+      "axis": {"grid": true, "gridColor": "#e5e7eb"}
     },
     "color": {
       "field": "age_group",
@@ -64,6 +61,18 @@
         "range": ["#8ecae6", "#219ebc", "#156082", "#0b3954"]
       }
     },
+    "column": {
+      "field": "trip_length",
+      "type": "ordinal",
+      "sort": ["1-3 nights", "4-7 nights", "8-14 nights", "15+ nights"],
+      "title": "Trip Length",
+      "header": {
+        "titleFontSize": 12,
+        "labelFontSize": 12,
+        "labelFont": "Georgia",
+        "titleFont": "Georgia"
+      }
+    },
     "tooltip": [
       {"field": "trip_length", "type": "ordinal", "title": "Trip Length"},
       {"field": "age_group", "type": "nominal", "title": "Age Group"},
@@ -71,6 +80,7 @@
     ]
   },
   "config": {
-    "view": {"stroke": null}
+    "view": {"stroke": null},
+    "facet": {"spacing": 20}
   }
 }

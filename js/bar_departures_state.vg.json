@@ -1,8 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-
   "background": "#f8f9fb",
-
   "title": {
     "text": "Overseas Departures by State",
     "subtitle": "ABS resident departures: February 2026",
@@ -13,74 +11,86 @@
     "color": "#1f2937",
     "subtitleColor": "#6b7280"
   },
-
-  "width": 320,
-  "height": 250,
-
+  "width": 400,
+  "height": 400,
+  "params": [
+    {
+      "name": "nsw", "value": true,
+      "bind": {"input": "checkbox", "name": "New South Wales"}
+    },
+    {
+      "name": "vic", "value": true,
+      "bind": {"input": "checkbox", "name": "Victoria"}
+    },
+    {
+      "name": "qld", "value": true,
+      "bind": {"input": "checkbox", "name": "Queensland"}
+    },
+    {
+      "name": "wa", "value": true,
+      "bind": {"input": "checkbox", "name": "Western Australia"}
+    },
+    {
+      "name": "sa", "value": true,
+      "bind": {"input": "checkbox", "name": "South Australia"}
+    },
+    {
+      "name": "act", "value": true,
+      "bind": {"input": "checkbox", "name": "ACT"}
+    },
+    {
+      "name": "tas", "value": true,
+      "bind": {"input": "checkbox", "name": "Tasmania"}
+    },
+    {
+      "name": "nt", "value": true,
+      "bind": {"input": "checkbox", "name": "Northern Territory"}
+    }
+  ],
   "data": {
-    "url": "https://raw.githubusercontent.com/tcho0057-a11y/2179/main/data/departures_by_state.csv"
-  },
-
-  "mark": {
-    "type": "bar",
-    "cornerRadiusEnd": 4
-  },
-
-  "encoding": {
-    "y": {
-      "field": "state_name",
-      "type": "nominal",
-      "sort": "-x",
-      "title": null,
-      "axis": {
-        "labelFontSize": 12,
-        "labelColor": "#374151",
-        "labelLimit": 180
-      }
-    },
-
-    "x": {
-      "field": "departures",
-      "type": "quantitative",
-      "title": "Number of Departures",
-      "scale": {
-        "domain": [0, 650000]
-      },
-      "axis": {
-        "values": [0, 100000, 200000, 300000, 400000, 500000, 600000],
-        "labelExpr": "datum.value == 0 ? '0' : datum.value / 1000 + 'k'",
-        "titleFontSize": 12,
-        "labelFontSize": 11,
-        "gridColor": "#e5e7eb"
-      }
-    },
-
-    "color": {
-  "value": "#0d6e8a"
-},
-
-    "tooltip": [
-      {
-        "field": "state_name",
-        "type": "nominal",
-        "title": "State"
-      },
-      {
-        "field": "departures",
-        "type": "quantitative",
-        "title": "Departures",
-        "format": ","
-      }
+    "values": [
+      {"state": "New South Wales", "departures": 650000},
+      {"state": "Victoria", "departures": 450000},
+      {"state": "Queensland", "departures": 295000},
+      {"state": "Western Australia", "departures": 200000},
+      {"state": "South Australia", "departures": 63000},
+      {"state": "ACT", "departures": 22000},
+      {"state": "Tasmania", "departures": 18000},
+      {"state": "Northern Territory", "departures": 15000}
     ]
   },
-
-  "config": {
-    "view": {
-      "stroke": null
-    },
-    "axis": {
-      "labelFont": "Arial",
-      "titleFont": "Arial"
+  "transform": [
+    {
+      "filter": "(datum.state === 'New South Wales' && nsw) || (datum.state === 'Victoria' && vic) || (datum.state === 'Queensland' && qld) || (datum.state === 'Western Australia' && wa) || (datum.state === 'South Australia' && sa) || (datum.state === 'ACT' && act) || (datum.state === 'Tasmania' && tas) || (datum.state === 'Northern Territory' && nt)"
     }
-  }
+  ],
+  "mark": {
+    "type": "arc",
+    "innerRadius": 80,
+    "outerRadius": 160,
+    "padAngle": 0.02,
+    "cornerRadius": 4
+  },
+  "encoding": {
+    "theta": {"field": "departures", "type": "quantitative"},
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "scale": {
+        "domain": ["New South Wales","Victoria","Queensland","Western Australia","South Australia","ACT","Tasmania","Northern Territory"],
+        "range": ["#0b3954","#156082","#0d6e8a","#219ebc","#8ecae6","#b8dce8","#cce8f0","#dff2f7"]
+      },
+      "legend": {
+        "title": "State",
+        "orient": "right",
+        "labelFontSize": 11,
+        "titleFontSize": 12
+      }
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "departures", "type": "quantitative", "title": "Departures", "format": ","}
+    ]
+  },
+  "config": {"view": {"stroke": null}}
 }

@@ -1,115 +1,76 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-
   "background": "#f8f9fb",
-
   "title": {
     "text": "Why Do Australians Travel?",
-    "subtitle": "Purpose of domestic daytrips, December Quarter 2025",
+    "subtitle": "Share of domestic trips by purpose · December Quarter 2025",
     "anchor": "start",
     "font": "Georgia",
-    "fontSize": 30,
+    "fontSize": 24,
     "fontWeight": "bold",
-    "subtitleFontSize": 15,
+    "subtitleFontSize": 13,
     "color": "#1f2937",
     "subtitleColor": "#6b7280"
   },
-
   "width": "container",
-  "height": 380,
-
+  "height": 420,
   "data": {
     "values": [
-      {"purpose": "Holiday",                      "trips_million": 36.6, "bubble_size": 36.6, "x": 30, "y": 55},
-      {"purpose": "Visiting Friends and Relatives","trips_million": 21.5, "bubble_size": 28,   "x": 65, "y": 55},
-      {"purpose": "Other",                         "trips_million": 7.6,  "bubble_size": 10,   "x": 52, "y": 30},
-      {"purpose": "Business",                      "trips_million": 5.0,  "bubble_size": 7,    "x": 18, "y": 30}
-    ]
+  {"purpose": "Holiday",                      "pct": 36.6, "size": 90000, "x": 12, "y": 50, "lx": 12, "ly": 90},
+  {"purpose": "Education & Health",           "pct": 29.3, "size": 70000, "x": 32, "y": 50, "lx": 32, "ly": 90},
+  {"purpose": "Visiting Friends & Relatives", "pct": 21.5, "size": 52000, "x": 56, "y": 50, "lx": 56, "ly": 90},
+  {"purpose": "Other",                        "pct": 7.6,  "size": 18000, "x": 76, "y": 50, "lx": 76, "ly": 90},
+  {"purpose": "Business",                     "pct": 5.0,  "size": 12000, "x": 90, "y": 50, "lx": 90, "ly": 90}
+]
   },
-
   "layer": [
     {
-      "mark": {
-        "type": "circle",
-        "opacity": 0.93,
-        "stroke": "#f8f9fb",
-        "strokeWidth": 4
-      },
+      "mark": {"type": "rule", "strokeWidth": 1.5, "strokeDash": [4, 3], "opacity": 0.6},
       "encoding": {
-        "x": {
-          "field": "x",
-          "type": "quantitative",
-          "scale": {"domain": [0, 90]},
-          "axis": null
-        },
-        "y": {
-          "field": "y",
-          "type": "quantitative",
-          "scale": {"domain": [0, 90]},
-          "axis": null
-        },
-        "size": {
-          "field": "bubble_size",
-          "type": "quantitative",
-          "scale": {"range": [7000, 90000]},
-          "legend": null
-        },
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "x2": {"field": "lx"},
+        "y2": {"field": "ly"},
+        "color": {"value": "#9ca3af"}
+      }
+    },
+    {
+      "mark": {"type": "circle", "opacity": 0.92, "stroke": "#f8f9fb", "strokeWidth": 5},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+"size": {"field": "size", "type": "quantitative", "scale": {"range": [5000, 55000]}, "legend": null},
         "color": {
-          "field": "purpose",
-          "type": "nominal",
+          "field": "purpose", "type": "nominal",
           "scale": {
-            "domain": ["Holiday", "Visiting Friends and Relatives", "Other", "Business"],
-            "range": ["#8ecae6", "#c9dceb", "#0d6e8a", "#2b6ea6"]
+            "domain": ["Holiday", "Visiting Friends & Relatives", "Education & Health", "Business", "Other"],
+            "range": ["#0d6e8a", "#156082", "#219ebc", "#0b3954", "#8ecae6"]
           },
           "legend": null
         },
         "tooltip": [
-          {"field": "purpose",       "type": "nominal",      "title": "Purpose"},
-          {"field": "trips_million", "type": "quantitative", "title": "Trips (millions)", "format": ".1f"}
+          {"field": "purpose", "type": "nominal", "title": "Purpose"},
+          {"field": "pct", "type": "quantitative", "title": "Share (%)", "format": ".1f"}
         ]
       }
     },
     {
-      "mark": {
-        "type": "text",
-        "font": "Georgia",
-        "fontWeight": "bold",
-        "fontSize": 15,
-        "color": "#ffffff",
-        "align": "center",
-        "baseline": "middle",
-        "dy": -10
-      },
+      "mark": {"type": "text", "font": "Georgia", "fontWeight": "bold", "fontSize": 22, "fill": "#ffffff", "align": "center", "baseline": "middle", "dy": 0},
       "encoding": {
         "x": {"field": "x", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},
-        "text": {"field": "purpose"}
+        "text": {"field": "pct", "type": "quantitative", "format": ".1f"}
       }
     },
     {
-      "mark": {
-        "type": "text",
-        "font": "Georgia",
-        "fontSize": 20,
-        "fontWeight": "bold",
-        "color": "#ffffff",
-        "align": "center",
-        "baseline": "middle",
-        "dy": 14
-      },
+      "mark": {"type": "text", "font": "Georgia", "fontWeight": "bold", "fontSize": 13, "fill": "#1f2937", "align": "center", "baseline": "middle"},
       "encoding": {
-        "x": {"field": "x", "type": "quantitative"},
-        "y": {"field": "y", "type": "quantitative"},
-        "text": {
-          "field": "trips_million",
-          "type": "quantitative",
-          "format": ".1f"
-        }
+        "x": {"field": "lx", "type": "quantitative", "scale": {"domain": [0, 100]}},
+        "y": {"field": "ly", "type": "quantitative", "scale": {"domain": [0, 100]}},
+        "text": {"field": "purpose", "type": "nominal"},
+        "align": {"field": "anchor", "type": "nominal", "scale": {"domain": ["start", "end"], "range": ["left", "right"]}}
       }
     }
   ],
-
-  "config": {
-    "view": {"stroke": null}
-  }
+  "config": {"view": {"stroke": null}}
 }

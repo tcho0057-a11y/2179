@@ -1,11 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-
   "background": "#f8f9fb",
-
   "title": {
-    "text": "International vs Domestic Travel Ratio by State",
-    "subtitle": "International departures per domestic overnight trip",
+    "text": "Domestic vs International Travel by State",
+    "subtitle": "Trips in thousands · TRA year ending Dec 2024 & ABS Feb 2026",
     "anchor": "start",
     "font": "Georgia",
     "fontSize": 20,
@@ -13,93 +11,86 @@
     "color": "#1f2937",
     "subtitleColor": "#6b7280"
   },
-
   "width": "container",
   "height": 340,
-
   "data": {
     "values": [
-      {"state": "New South Wales",          "domestic_trips": 10570, "international_departures": 606060},
-      {"state": "Victoria",                 "domestic_trips": 8043,  "international_departures": 445790},
-      {"state": "Queensland",               "domestic_trips": 6772,  "international_departures": 303250},
-      {"state": "Western Australia",        "domestic_trips": 2563,  "international_departures": 204400},
-      {"state": "South Australia",          "domestic_trips": 2050,  "international_departures": 62930},
-      {"state": "Australian Capital Territory", "domestic_trips": 586, "international_departures": 22200},
-      {"state": "Tasmania",                 "domestic_trips": 757,   "international_departures": 18710},
-      {"state": "Northern Territory",       "domestic_trips": 214,   "international_departures": 12260}
+      {"state": "New South Wales", "type": "Domestic", "trips": 10570},
+      {"state": "New South Wales", "type": "International", "trips": 606},
+      {"state": "Victoria", "type": "Domestic", "trips": 8043},
+      {"state": "Victoria", "type": "International", "trips": 446},
+      {"state": "Queensland", "type": "Domestic", "trips": 6772},
+      {"state": "Queensland", "type": "International", "trips": 303},
+      {"state": "Western Australia", "type": "Domestic", "trips": 2563},
+      {"state": "Western Australia", "type": "International", "trips": 204},
+      {"state": "South Australia", "type": "Domestic", "trips": 2050},
+      {"state": "South Australia", "type": "International", "trips": 63},
+      {"state": "Australian Capital Territory", "type": "Domestic", "trips": 586},
+      {"state": "Australian Capital Territory", "type": "International", "trips": 22},
+      {"state": "Tasmania", "type": "Domestic", "trips": 757},
+      {"state": "Tasmania", "type": "International", "trips": 19},
+      {"state": "Northern Territory", "type": "Domestic", "trips": 214},
+      {"state": "Northern Territory", "type": "International", "trips": 12}
     ]
   },
-
-  "transform": [
-    {
-      "calculate": "datum.international_departures / datum.domestic_trips",
-      "as": "ratio"
-    }
-  ],
-
   "layer": [
     {
-      "mark": {
-        "type": "bar",
-        "color": "#2171b5",
-        "cornerRadiusEnd": 4
-      },
+      "mark": {"type": "line", "strokeWidth": 2, "color": "#d1d5db"},
       "encoding": {
         "y": {
           "field": "state",
           "type": "nominal",
-          "sort": "-x",
+          "sort": ["-x"],
           "title": null,
           "axis": {
             "labelFontSize": 12,
-            "labelColor": "#1f2937"
+            "labelColor": "#1f2937",
+            "labelFont": "Georgia",
+            "labelLimit": 200
           }
         },
         "x": {
-          "field": "ratio",
+          "field": "trips",
           "type": "quantitative",
-          "title": "International Departures per Domestic Trip",
-          "axis": {
-            "gridColor": "#e5e7eb",
-            "labelFontSize": 11
+          "title": "Trips (thousands)",
+          "axis": {"gridColor": "#e5e7eb", "labelFontSize": 11}
+        },
+        "detail": {"field": "state", "type": "nominal"}
+      }
+    },
+    {
+      "mark": {"type": "point", "filled": true, "size": 120},
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {"field": "trips", "op": "max", "order": "descending"}
+        },
+        "x": {
+          "field": "trips",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "type",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Domestic", "International"],
+            "range": ["#0d6e8a", "#f4a261"]
+          },
+          "legend": {
+            "title": "Travel Type",
+            "orient": "right",
+            "labelFontSize": 12,
+            "titleFontSize": 12
           }
         },
         "tooltip": [
           {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "international_departures", "type": "quantitative", "title": "International Departures", "format": ","},
-          {"field": "domestic_trips", "type": "quantitative", "title": "Domestic Trips", "format": ","},
-          {"field": "ratio", "type": "quantitative", "title": "Ratio", "format": ".1f"}
+          {"field": "type", "type": "nominal", "title": "Type"},
+          {"field": "trips", "type": "quantitative", "title": "Trips (thousands)", "format": ","}
         ]
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": 6,
-        "fontSize": 11,
-        "color": "#4b5563"
-      },
-      "encoding": {
-        "y": {
-          "field": "state",
-          "type": "nominal",
-          "sort": "-x"
-        },
-        "x": {
-          "field": "ratio",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "ratio",
-          "type": "quantitative",
-          "format": ".1f"
-        }
       }
     }
   ],
-
-  "config": {
-    "view": {"stroke": null}
-  }
+  "config": {"view": {"stroke": null}}
 }

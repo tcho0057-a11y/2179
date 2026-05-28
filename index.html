@@ -10,9 +10,9 @@
 
   <header class="hero-section">
     <div class="hero-header-full">
-      <div class="eyebrow">FIT2179 · DATA VISUALISATION</div>
+      <div class="eyebrow">FIT2179 · DATA VISUALISATION · BY TANPREET CHOPRA · 28/05/2026 </div>
       <h1>Where Do Australians Travel?</h1>
-      <div class="source-line">Sources: Tourism Research Australia, Australian Bureau of Statistics</div>
+      <div class="source-line">Sources: Tourism Research Australia (https://www.tra.gov.au/en/tourism-statistics/domestic-tourism-statistics-results), Australian Bureau of Statistics (https://www.abs.gov.au/statistics/industry/tourism-and-transport/overseas-arrivals-and-departures-australia/latest-release)</div>
     </div>
 
     <div class="hero-body-split">
@@ -73,7 +73,7 @@
     </p>
     
     <div class="two-chart-grid">
-      <div class="chart-card">
+      <div class="chart-card"style="padding-bottom: 0.3rem;">
         <div id="map_departures_state"></div>
         <div class="chart-annotation">NSW darkest; Tasmania lightest</div>
       </div>
@@ -84,7 +84,7 @@
       </div>
     </div>
 
-    <div class="chart-card full-width-card" style="margin-top: 1.4rem; display: block; width: 100%; box-sizing: border-box;">
+    <div class="chart-card full-width-card" style="margin-top: 0.5rem; display: block; width: 100%; box-sizing: border-box;">
       
       <div id="bar_per_capita_state" style="width: 100%; display: block;"></div>
 
@@ -178,12 +178,15 @@
     </div>
 
     <div class="section-tag">DOMESTIC VS INTERNATIONAL (TWO SOURCES)</div>
-
-    <p class="narr">
-      Australians travel heavily both domestically and internationally. 
-      This section compares domestic overnight trips with overseas departures 
-      to reveal which states travel most overall and how Australia's travel mix is distributed.
-    </p>
+<p class="narr">
+  Australians are active travellers, moving freely both within their borders and abroad.
+  Domestic overnight travel remains dominant, yet international departures are steadily climbing.<br>
+  Global travel continues to normalise, and Australians are leaving in record numbers.<br>
+  Larger states naturally lead total activity  NSW, Victoria, and Queensland drive outbound volumes.<br>
+  Population size is the strongest predictor of how much a state travels overall.<br>
+  Smaller regions tell a different story, displaying unique behaviours shaped by local culture.<br>
+  Across the board, Australians balance a love of local exploration with a growing appetite for overseas travel.
+</p>
 
     <div class="two-chart-grid">
       <div class="chart-card">
@@ -206,10 +209,13 @@
 
     <div class="pill pill-coral">Trip Length and Age</div>
 
-    <p class="narr">
-      Longer domestic trips are more common among older Australians. As trip length increases,
-      the share of travellers aged 60 and over becomes much larger.
-    </p>
+   <p class="narr">
+  Older Australians dominate longer domestic trips as the pattern sharpens with every extra night.
+  Travellers aged 60+ make up half<br> of all trips lasting 15 nights or more.
+  Younger travellers aged 14–29 prefer short stays, peaking at 1–3 night trips.<br>
+  The 30–44 group stays relatively consistent across all trip lengths.<br>
+  Age is the single strongest predictor of how long Australians travel domestically.
+</p>
 
     <div class="chart-card destination-card">
       <div id="trip_length_age"></div>
@@ -265,7 +271,6 @@
     // Embed code
     vegaEmbed("#map_departures_state", "js/map_departures_state.vg.json", { actions: false });
     vegaEmbed("#bar_departures_state", "js/bar_departures_state.vg.json", { actions: false });
-    
     // Bind your Vega-lite chart selection param directly to our HTML dropdown element
     vegaEmbed("#bar_per_capita_state", "js/bar_per_capita_state.vg.json", { actions: false });
 

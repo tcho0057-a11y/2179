@@ -1,10 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "background": "#f8f9fb",
-
   "title": {
-    "text": "Travel Mix Donut",
-    "subtitle": "Domestic travel still dominates Australian tourism activity",
+    "text": "Domestic vs International Travel",
+    "subtitle": "Trip totals in thousands · TRA year ending Dec 2024 & ABS Feb 2026",
     "anchor": "start",
     "font": "Georgia",
     "fontSize": 20,
@@ -12,67 +11,79 @@
     "color": "#1f2937",
     "subtitleColor": "#6b7280"
   },
-
   "width": "container",
   "height": 300,
-
   "data": {
     "values": [
-      {
-        "type": "Domestic Overnight Trips",
-        "trips": 29538
-      },
-      {
-        "type": "International Departures",
-        "trips": 1679600
-      }
+      {"type": "Domestic Overnight Trips", "trips": 31538, "y": 1},
+      {"type": "International Departures", "trips": 1680, "y": 1}
     ]
   },
-
-  "mark": {
-    "type": "arc",
-    "innerRadius": 70,
-    "outerRadius": 120,
-    "stroke": "white",
-    "strokeWidth": 2
-  },
-
-  "encoding": {
-    "theta": {
-      "field": "trips",
-      "type": "quantitative"
-    },
-
-    "color": {
-      "field": "type",
-      "type": "nominal",
-      "scale": {
-        "range": ["#8ecae6", "#1d4e89"]
-      },
-      "legend": {
-        "title": null,
-        "orient": "bottom"
+  "layer": [
+    {
+      "mark": {"type": "point", "filled": true, "opacity": 0.85},
+      "encoding": {
+        "x": {
+          "field": "type",
+          "type": "nominal",
+          "title": null,
+          "axis": {
+            "labelFontSize": 13,
+            "labelFont": "Georgia",
+            "labelColor": "#1f2937",
+            "labelAngle": 0,
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "title": null,
+          "axis": null,
+          "scale": {"domain": [0, 2]}
+        },
+        "size": {
+          "field": "trips",
+          "type": "quantitative",
+          "scale": {"range": [1000, 60000]},
+          "legend": null
+        },
+        "color": {
+          "field": "type",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Domestic Overnight Trips", "International Departures"],
+            "range": ["#0d6e8a", "#f4a261"]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "type", "type": "nominal", "title": "Type"},
+          {"field": "trips", "type": "quantitative", "title": "Trips (thousands)", "format": ","}
+        ]
       }
     },
-
-    "tooltip": [
-      {
-        "field": "type",
-        "type": "nominal",
-        "title": "Travel Type"
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "font": "Georgia",
+        "color": "white"
       },
-      {
-        "field": "trips",
-        "type": "quantitative",
-        "title": "Trips",
-        "format": ","
+      "encoding": {
+        "x": {"field": "type", "type": "nominal"},
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {"domain": [0, 2]}
+        },
+        "text": {"field": "trips", "type": "quantitative", "format": ","}
       }
-    ]
-  },
-
-  "config": {
-    "view": {
-      "stroke": null
     }
-  }
+  ],
+  "config": {"view": {"stroke": null}}
 }
