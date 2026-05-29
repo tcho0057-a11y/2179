@@ -1,20 +1,16 @@
-/* =========================
-   GLOBAL RESET & CONTAINER WIDTHS
-========================= */
+
 body {
   background: #f5f0e8;
   color: #1a1a2e;
   font-family: Arial, sans-serif;
-  max-width: 1400px;        /* Increased from 1200px to expand the page and reduce wide margins */
+  max-width: 1400px;        
   margin: 0 auto;
-  padding: 1rem 1.5rem;       /* Balanced padding on screen edges */
+  padding: 1rem 1.5rem;       
   line-height: 1.5;
   box-sizing: border-box;
 }
 
-/* =========================
-   HERO HEADER SECTION 
-========================= */
+
 .hero-section {
   display: flex;
   flex-direction: column;
@@ -46,11 +42,9 @@ body {
   margin-bottom: 1rem;
 }
 
-/* LOWER HERO LAYOUT AREA */
 .hero-body-split {
   display: grid;
-  grid-template-columns: 1.3fr 1fr; /* Side-by-side balanced alignment */
-  gap: 2.5rem;
+  grid-template-columns: 1.3fr 1fr; 
   align-items: start;
 }
 
@@ -72,7 +66,7 @@ body {
   width: 100%;
 }
 
-/* Forces cards horizontally side-by-side */
+
 .hero-cards-row {
   display: grid;
   grid-template-columns: 1fr 1fr; 
@@ -80,7 +74,6 @@ body {
   width: 100%;
 }
 
-/* INDIVIDUAL CARDS */
 .hero-stat-card {
   background: #1f2937;
   color: white;
@@ -105,9 +98,7 @@ body {
   color: #d1d5db;
 }
 
-/* =========================
-   TOP NAVIGATION BAR
-========================= */
+
 .top-nav {
   display: flex;
   justify-content: space-between;
@@ -148,9 +139,7 @@ body {
   transform: scale(0.98);
 }
 
-/* =========================
-   DASHBOARD WORKSPACE LAYOUT
-========================= */
+
 .section,
 .destination-section {
   margin-top: 1.5rem;
@@ -215,12 +204,10 @@ body {
   box-sizing: border-box;
 }
 
-/* =========================
-   CHART GRID FORMATS (WIDE RESILIENCE)
-========================= */
+
 .two-chart-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Splitting wide space cleanly */
+  grid-template-columns: 1fr 1fr; 
   gap: 1.5rem;
   align-items: stretch;
   width: 100%;
@@ -240,7 +227,6 @@ body {
   margin-bottom: 0.3rem;
   line-height: 1.5;
 }
-/* FULL LENGTH RESIZING STRATEGIES */
 .full-width-card {
   margin-top: 1.4rem;
   display: block;
@@ -250,13 +236,11 @@ body {
 
 .destination-card {
   width: 100%;
-  max-width: 100%; /* Spans full length of row across wide viewport margins */
+  max-width: 100%; 
   margin-bottom: 1.5rem;
 }
 
-/* =========================
-   BOTTOM FILTER BAR DESIGN
-========================= */
+
 .dashboard-bottom-bar {
   width: 100%;
   box-sizing: border-box;
@@ -275,9 +259,7 @@ body {
   border-color: #0d6e8a;
 }
 
-/* =========================
-   TEXT LABELS & ANNOTATIONS
-========================= */
+
 .chart-caption {
   text-align: center;
   font-size: 0.85rem;
@@ -301,9 +283,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* =========================
-   RESPONSIVE DESIGN ADAPTATIONS
-========================= */
+
 @media (max-width: 1100px) {
   .hero-header-full h1 {
     font-size: 4rem;
@@ -353,9 +333,7 @@ body {
     border-right: none;
   }
 }
-/* =========================
-   CHART CONTAINERS
-========================= */
+
 
 .chart-card {
   width: 100%;
@@ -365,7 +343,6 @@ body {
   width: 100%;
 }
 
-/* Vega embeds */
 
 .vega-embed,
 .vega-embed summary,
@@ -373,7 +350,6 @@ body {
   width: 100% !important;
 }
 
-/* canvas + svg */
 
 .vega-embed canvas,
 .vega-embed svg {
@@ -381,14 +357,12 @@ body {
   height: auto !important;
 }
 
-/* destination cards */
 
 .destination-card {
   max-width: 100%;
   width: 100%;
 }
 
-/* reduce whitespace */
 
 .two-chart-grid {
   gap: 1rem;
@@ -403,7 +377,6 @@ body {
 .chart-card svg {
   width: 100% !important;
 }
-/* Vega-Lite checkbox bindings */
 .vega-bindings {
   display: flex !important;
   flex-wrap: wrap !important;
